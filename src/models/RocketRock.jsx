@@ -11,8 +11,11 @@ const RocketRock = (props) => {
 
   // Use useFrame to update rotation every frame
   useFrame((state, delta) => {
-    // Rotate the group around the y-axis
-    group.current.rotation.y += delta * 0.2; // Adjust the rotation speed as needed
+    if (props.mode === 'normal') {
+      group.current.rotation.y += delta * 0.2;
+    } else {
+      group.current.rotation.y -= delta * 0.2;
+    }
   });
 
   return (

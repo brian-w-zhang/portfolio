@@ -1,0 +1,21 @@
+.toggle-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: navy;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 1;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.toggle-button:hover {
+  filter: drop-shadow(0px 0px 4px white);
+  color: navy;
+  background-color: white;
+  font-weight: bold;
+}
