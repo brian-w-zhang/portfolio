@@ -1,20 +1,14 @@
 import { Canvas } from '@react-three/fiber';
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import Loader from '../components/Loader';
-// import Globe from '../models/Globe';
 import RocketRock from '../models/RocketRock';
-// import Space from '../models/Space';
-// import Cluster from '../models/Cluster';
-// import Stars from '../models/Stars';
 import BlueSpace from '../models/BlueSpace';
-import Fox from '../models/Fox';
 import Ship from '../models/Ship';
-
-/* <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
-          POPUP
-        </div> */
+import { OrbitControls } from '@react-three/drei';
 
 function Home() {
+  const [rotationAngle, setRotationAngle] = useState(0);
+
   const adjustIslandForScreenSize = () => {
     let screenScale, screenPosition;
     let islandRotation = [0.4, 0, 0];
@@ -37,18 +31,28 @@ function Home() {
     <section className="w-full h-screen relative">
       <Canvas
         className="w-full h-screen bg-transparent"
-        camera={{ near: 0.1, far: 1000 }}
+        camera={{ position: [0, 0, 7], fov: 60 }}
       >
+        <OrbitControls
+          enablePan={false} // Disable panning to prevent user from changing the initial view
+          enableZoom={true} // Enable zooming
+          zoomSpeed={1} // Adjust the zoom speed if needed
+          minDistance={2} // Set the minimum distance (zoom in limit)
+          maxDistance={200} // Set the maximum distance (zoom out limit)
+        />
         <Suspense fallback={<Loader />}>
-          <directionalLight position={[1.6, 1, 1]} intensity={2} />
+          <directionalLight
+            position={[1, 1, 0]}
+            intensity={4}
+            rotation={[rotationAngle, 0, 0]} // Rotate the entire scene instead of the light
+          />
           <ambientLight intensity={0.5} />
           <hemisphereLight
             skyColor="#b1e1ff"
             groundColor="#000000"
             intensity={0.5}
           />
-
-          <Ship />
+          <Ship position={[0, 0, 0]} />
           <BlueSpace />
           <RocketRock
             position={islandPosition}

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { useGLTF } from '@react-three/drei';
+import { useGLTF, useAnimations } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { a } from '@react-spring/three';
 
@@ -12,7 +12,7 @@ const RocketRock = (props) => {
   // Use useFrame to update rotation every frame
   useFrame((state, delta) => {
     // Rotate the group around the y-axis
-    group.current.rotation.y += delta * 0.5; // Adjust the rotation speed as needed
+    group.current.rotation.y += delta * 0.2; // Adjust the rotation speed as needed
   });
 
   return (
