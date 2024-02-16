@@ -7,19 +7,38 @@ import BlueSpace from '../models/BlueSpace';
 import Ship from '../models/Ship';
 import { OrbitControls } from '@react-three/drei';
 import DialogueBox from '../components/Dialogue';
+import Instructions from '../components/Instructions';
 
 function Home() {
   const [mode, setMode] = useState('dialogue'); // Initial mode
   const [cameraPosition, setCameraPosition] = useState([0, 0, 5]); // Initial camera position
   const [canvasKey, setCanvasKey] = useState(0); // Key to force Canvas reload
   const [modelsLoaded, setModelsLoaded] = useState(false); // State to track if models have loaded
-  const [delayedDialogueRender, setDelayedDialogueRender] = useState(false); // State to delay rendering of DialogueBox
+  const [showTextBox, setShowTextBox] = useState(false);
+
+  useEffect(() => {
+    // Show the textbox after 1.5 seconds
+    const showTimeout = setTimeout(() => {
+      setShowTextBox(true);
+    }, 100);
+
+    // Hide the textbox after 3 seconds
+    const hideTimeout = setTimeout(() => {
+      setShowTextBox(false);
+    }, 7000); // 1500 (show time) + 3000 (display time)
+
+    // Clear timeouts to prevent memory leaks
+    return () => {
+      clearTimeout(showTimeout);
+      clearTimeout(hideTimeout);
+    };
+  }, [mode]);
 
   useEffect(() => {
     // Simulate loading time for models (1 second delay)
     const timeout = setTimeout(() => {
       setModelsLoaded(true);
-    }, 10);
+    }, 1500);
 
     return () => clearTimeout(timeout);
   }, []);
@@ -51,8 +70,10 @@ function Home() {
   return (
     <section className="w-full h-screen relative">
       <Canvas
-        className="w-full h-screen bg-transparent"
-        key={canvasKey} // Key to force reload
+        className={`w-full h-screen bg-transparent ${
+          mode === 'normal' ? 'grabby-cursor' : ''
+        }`} // Conditionally apply grabby cursor class
+        key={canvasKey}
         camera={{
           position: cameraPosition,
           fov: 60,
@@ -89,18 +110,25 @@ function Home() {
       <button className="toggle-button" onClick={toggleMode}>
         {mode === 'normal' ? 'Dialogue' : 'Orbit'}
       </button>
+
+      {modelsLoaded && showTextBox && mode === 'normal' && (
+        <Instructions
+          text={[``, 'Click and drag to rotate.', 'Scroll to zoom in and out.']}
+        />
+      )}
+
       {modelsLoaded && mode === 'dialogue' && (
         <DialogueBox
           text={[
-            ``,
+            '',
             `Hi! 
             I'm Brian. 
-            Welcome to my online portfolio.`,
+            Welcome to my online portfolio!`,
             "I'm a Software Engineering student at the University of Waterloo.",
-            `Currently, I'm a Web Developer at Mcgill University,
-            and a Firmware Developer at UW Orbital.`,
+            `Currently, I'm a Web Developer for Mcgill University,
+            and a Firmware Developer for UW Orbital.`,
             `Click 'About' for more of my skills and experience,
-            and 'Projects' to see cool stuff I've made.`,
+            and 'Projects' to see cool stuff I've brought to life.`,
             'Feel free to send me message anytime!',
             `Click 'Orbit' to continue exploring this universe.`,
           ]}

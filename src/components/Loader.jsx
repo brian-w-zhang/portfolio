@@ -3,8 +3,10 @@ import { Html } from '@react-three/drei';
 const Loader = () => {
   return (
     <Html>
-      <div className="loader-container">
-        <div className="loader"></div>
+      <div className="load-background">
+        <div className="loader-container">
+          <div className="loader"></div>
+        </div>
       </div>
     </Html>
   );
