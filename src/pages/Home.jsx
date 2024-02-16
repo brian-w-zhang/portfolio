@@ -129,7 +129,7 @@ function Home() {
             and a Firmware Developer for UW Orbital.`,
             `Click 'About' for more of my skills and experience,
             and 'Projects' to see cool stuff I've brought to life.`,
-            'Feel free to send me message anytime!',
+            'Feel free to contact me by sending a message!',
             `Click 'Orbit' to continue exploring this universe.`,
           ]}
         />
