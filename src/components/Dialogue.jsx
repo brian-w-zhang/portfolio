@@ -1,30 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useTypewriter } from 'react-simple-typewriter';
 
-function DialogueBox({ text, onNext }) {
-  const [typedText, setTypedText] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
+function DialogueBox({ text }) {
+  const [showContent, setShowContent] = useState(false);
 
-  // Function to simulate typing effect
-  const typeText = () => {
-    if (currentIndex < text.length) {
-      setTypedText((prevText) => prevText + text[currentIndex]);
-      setCurrentIndex((prevIndex) => prevIndex + 1);
-      setTimeout(typeText, 50); // Typing speed
-    }
-  };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowContent(true);
+    }, 1500); // Adjust the delay time as needed (in milliseconds)
 
-  // Function to handle button click
-  const handleNextClick = () => {
-    setTypedText(''); // Clear the text
-    setCurrentIndex(0);
-    onNext(); // Call the onNext function passed from the parent component
-  };
+    // Clear the timeout to prevent memory leaks
+    return () => clearTimeout(timer);
+  }, []);
+
+  // const [textToType] = useState(text[0]); // Store the text to type
+  const [isDelay, setIsDelay] = useState(false); // Initially, there's no delay
+
+  // Custom hook to handle the typewriter effect
+  const [typedText] = useTypewriter({
+    words: text,
+    loop: 1,
+    typeSpeed: 30,
+    delaySpeed: 1500,
+    deleteSpeed: 0,
+  });
 
   return (
-    <div className="dialogue-box">
-      <div className="text">{typedText}</div>
-      <button onClick={handleNextClick}>Next</button>
-    </div>
+    <>
+      {showContent && (
+        <div className="dialogue-box">
+          <div className="text">{typedText}</div>
+        </div>
+      )}
+    </>
   );
 }
 

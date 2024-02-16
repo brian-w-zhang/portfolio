@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber';
-import { Suspense, useState, useRef } from 'react';
+import { Suspense, useState, useRef, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
 import Loader from '../components/Loader';
 import RocketRock from '../models/RocketRock';
@@ -12,26 +12,20 @@ function Home() {
   const [mode, setMode] = useState('dialogue'); // Initial mode
   const [cameraPosition, setCameraPosition] = useState([0, 0, 5]); // Initial camera position
   const [canvasKey, setCanvasKey] = useState(0); // Key to force Canvas reload
-  const [dialogueIndex, setDialogueIndex] = useState(0); // Index to track dialogue progress
+  const [modelsLoaded, setModelsLoaded] = useState(false); // State to track if models have loaded
+  const [delayedDialogueRender, setDelayedDialogueRender] = useState(false); // State to delay rendering of DialogueBox
 
-  const dialogues = [
-    'Hello, welcome to the dialogue!',
-    'This is the second line of dialogue.',
-    'And this is the third line.',
-    'Switch back to orbit',
-  ];
+  useEffect(() => {
+    // Simulate loading time for models (1 second delay)
+    const timeout = setTimeout(() => {
+      setModelsLoaded(true);
+    }, 10);
 
-  const handleNextDialogue = () => {
-    if (dialogueIndex < dialogues.length - 1) {
-      setDialogueIndex((prevIndex) => prevIndex + 1);
-    } else {
-      setMode('normal'); // Switch back to normal mode when dialogue ends
-    }
-  };
+    return () => clearTimeout(timeout);
+  }, []);
 
   const toggleMode = () => {
     setMode(mode === 'normal' ? 'dialogue' : 'normal');
-    setDialogueIndex(0); // Reset dialogue index when mode changes
     setCameraPosition(mode === 'normal' ? [0, 0, 5] : [0, 0, 6]);
     setCanvasKey((prevKey) => prevKey + 1); // Increment key to force reload
   };
@@ -64,13 +58,15 @@ function Home() {
           fov: 60,
         }}
       >
-        <OrbitControls
-          enablePan={false} // Disable panning to prevent user from changing the initial view
-          enableZoom={true} // Enable zooming
-          zoomSpeed={1} // Adjust the zoom speed if needed
-          minDistance={2} // Set the minimum distance (zoom in limit)
-          maxDistance={200} // Set the maximum distance (zoom out limit)
-        />
+        {mode === 'normal' && ( // Render OrbitControls only if mode is 'normal'
+          <OrbitControls
+            enablePan={false}
+            enableZoom={true}
+            zoomSpeed={1}
+            minDistance={2}
+            maxDistance={200}
+          />
+        )}
         <Suspense fallback={<Loader />}>
           <directionalLight position={[1, 1, 0]} intensity={4} />
           <ambientLight intensity={0.5} />
@@ -86,16 +82,30 @@ function Home() {
             scale={islandScale}
             rotation={islandRotation}
             mode={mode}
+            onLoad={() => setModelsLoaded(true)} // Update state when models are loaded
           />
         </Suspense>
       </Canvas>
       <button className="toggle-button" onClick={toggleMode}>
         {mode === 'normal' ? 'Dialogue' : 'Orbit'}
       </button>
-      <DialogueBox
-        text={dialogues[dialogueIndex]}
-        onNext={handleNextDialogue}
-      />
+      {modelsLoaded && mode === 'dialogue' && (
+        <DialogueBox
+          text={[
+            ``,
+            `Hi! 
+            I'm Brian. 
+            Welcome to my online portfolio.`,
+            "I'm a Software Engineering student at the University of Waterloo.",
+            `Currently, I'm a Web Developer at Mcgill University,
+            and a Firmware Developer at UW Orbital.`,
+            `Click 'About' for more of my skills and experience,
+            and 'Projects' to see cool stuff I've made.`,
+            'Feel free to send me message anytime!',
+            `Click 'Orbit' to continue exploring this universe.`,
+          ]}
+        />
+      )}
     </section>
   );
 }

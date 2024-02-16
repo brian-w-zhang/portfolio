@@ -1,35 +1,22 @@
-.dialogue-container {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  width: 30%; /* Adjust width as needed */
-  background-color: rgba(255, 255, 255, 0.8); /* White background */
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+.dialogue-box-container {
+  display: relative;
+  display: flex;
+  flex-direction: row-reverse; /* Reversing the order to place the triangle on the left */
 }
 
 .dialogue-box {
-  margin-bottom: 10px;
+  position: absolute;
+  top: 40%;
+  left: 45%;
+  max-width: 300px;
+  width: auto; /* Adjust width as needed */
+  background-color: rgba(255, 255, 255, 0.8); /* White background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .dialogue-box .text {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.5;
-  margin-bottom: 10px;
-}
-
-.dialogue-box button {
-  background-color: #007bff; /* Blue button background */
-  color: #fff; /* White button text */
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.dialogue-box button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
 }
