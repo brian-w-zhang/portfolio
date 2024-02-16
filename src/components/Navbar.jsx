@@ -1,15 +1,11 @@
 import { NavLink } from 'react-router-dom';
+import planet from '../assets/planet-icon.png';
 
 const Navbar = () => {
   return (
     <header className="header">
-      <NavLink
-        to="/"
-        className={
-          'w-10 h-10 rounded-lg bg-white items-center justify-center flex font-bold shadow-md'
-        }
-      >
-        <p className="blue-gradient_text">BZ</p>
+      <NavLink to="/" className={'w-10 h-10 items-center justify-center flex'}>
+        <img src={planet} />
       </NavLink>
       <nav className="flex text-lg gap-7 font-medium">
         <NavLink
