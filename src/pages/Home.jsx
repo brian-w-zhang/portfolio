@@ -15,6 +15,7 @@ function Home() {
   const [canvasKey, setCanvasKey] = useState(0); // Key to force Canvas reload
   const [modelsLoaded, setModelsLoaded] = useState(false); // State to track if models have loaded
   const [showTextBox, setShowTextBox] = useState(false);
+  const [showStartButton, setShowStartButton] = useState(true); // State to track if start button should be shown
 
   useEffect(() => {
     // Show the textbox after 1.5 seconds
@@ -49,6 +50,11 @@ function Home() {
     setCanvasKey((prevKey) => prevKey + 1); // Increment key to force reload
   };
 
+  const startDialogue = () => {
+    setShowStartButton(false); // Hide the start button
+    setShowTextBox(true); // Show the dialogue
+  };
+
   const adjustIslandForScreenSize = () => {
     let screenScale, screenPosition;
     let islandRotation = [0.4, 0, 0];
@@ -68,7 +74,7 @@ function Home() {
     adjustIslandForScreenSize();
 
   return (
-    <section className="w-full h-screen relative">
+    <section className="main-section">
       <Canvas
         className={`w-full h-screen bg-transparent ${
           mode === 'normal' ? 'grabby-cursor' : ''
@@ -88,7 +94,9 @@ function Home() {
             maxDistance={200}
           />
         )}
-        <Suspense fallback={<Loader onLoaderDisappear={() => setModelsLoaded(true)}/>}>
+        <Suspense
+          fallback={<Loader onLoaderDisappear={() => setModelsLoaded(true)} />}
+        >
           <directionalLight position={[1, 1, 0]} intensity={4} />
           <ambientLight intensity={0.5} />
           <hemisphereLight
