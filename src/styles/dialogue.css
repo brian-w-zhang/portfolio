@@ -9,7 +9,7 @@
   .dialogue-box .text,
   .instructions-box .text {
     font-size: 16px; /* Adjust font size for smaller screens */
-    line-height: 1.2;
+    line-height: 1.3;
   }
 }
 
