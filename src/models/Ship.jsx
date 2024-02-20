@@ -13,16 +13,19 @@ const Ship = (props) => {
     actions['Take 001'].play();
   }, [actions]);
 
-  let radius = 2;
-  let speed2 = -(2 * Math.PI) / 10;
+  let radius;
+  let speed2;
+  let shipPosition;
   // Define variables for orbiting effect
   if (window.innerWidth < 768) {
     // this line was changed
     radius = 2;
     speed2 = -(2 * Math.PI) / 6;
+    shipPosition = [-0.4, -0.5, 4];
   } else {
     radius = 3;
     speed2 = -(2 * Math.PI) / 6;
+    shipPosition = [-0.4, -0.5, 4];
   }
 
   // enable for normal orbit, disable/comment out for dialogue
@@ -39,16 +42,24 @@ const Ship = (props) => {
       // Set rotation around its own center
       meshRef.current.rotation.y = rotationAngle + 1.6;
     } else {
-      meshRef.current.position.x = -0.4;
-      meshRef.current.position.z = 4;
-      meshRef.current.position.y = -0.5;
-      meshRef.current.rotation.y = 0;
+      if (window.innerWidth < 768) {
+        // this line was changed
+        meshRef.current.position.x = -0.3;
+        meshRef.current.position.z = 2.8;
+        meshRef.current.position.y = -1;
+        meshRef.current.rotation.y = 0;
+      } else {
+        meshRef.current.position.x = -0.4;
+        meshRef.current.position.z = 4;
+        meshRef.current.position.y = -0.5;
+        meshRef.current.rotation.y = 0;
+      }
     }
   });
 
   return (
     <>
-      <mesh scale={0.003} position={[-0.4, -0.5, 4]} ref={meshRef}>
+      <mesh scale={0.003} ref={meshRef}>
         <primitive object={scene} />
       </mesh>
     </>

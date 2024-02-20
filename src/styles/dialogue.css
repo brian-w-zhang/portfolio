@@ -4,6 +4,15 @@
   line-height: 1.5;
 }
 
+/* Media query for screens with inner width less than 768 pixels */
+@media screen and (max-width: 767px) {
+  .dialogue-box .text,
+  .instructions-box .text {
+    font-size: 16px; /* Adjust font size for smaller screens */
+    line-height: 1.2;
+  }
+}
+
 .dialogue-box {
   text-align: center;
   position: absolute;
