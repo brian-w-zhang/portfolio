@@ -23,9 +23,11 @@
 }
 
 .dialogue-box {
+  text-align: center;
   position: absolute;
-  top: 40%;
-  left: 40%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   max-width: 300px;
   width: auto; /* Adjust width as needed */
   background-color: rgba(255, 255, 255, 0.8); /* White background */
@@ -37,9 +39,10 @@
 .instructions-box {
   text-align: center;
   position: absolute;
-  top: 45%;
-  left: 40%;
-  right: 40%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   max-width: 300px;
   width: auto; /* Adjust width as needed */
   background-color: rgba(255, 255, 255, 0.8); /* White background */
