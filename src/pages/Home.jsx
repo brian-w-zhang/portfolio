@@ -138,7 +138,7 @@ function Home() {
         <DialogueBox
           text={[
             '',
-            `Hi! 
+            `Hi👋!
             I'm Brian. 
             Welcome to my online portfolio!`,
             "I'm a Software Engineering student at the University of Waterloo.",
