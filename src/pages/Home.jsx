@@ -76,7 +76,7 @@ function Home() {
   return (
     <section className="main-section">
       <Canvas
-        className={`w-full h-screen bg-transparent ${
+        className={`canvas-container ${
           mode === 'normal' ? 'grabby-cursor' : ''
         }`} // Conditionally apply grabby cursor class
         key={canvasKey}
