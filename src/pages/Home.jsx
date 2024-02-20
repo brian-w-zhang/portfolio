@@ -16,6 +16,7 @@ function Home() {
   const [modelsLoaded, setModelsLoaded] = useState(false); // State to track if models have loaded
   const [showTextBox, setShowTextBox] = useState(false);
   const [showStartButton, setShowStartButton] = useState(true); // State to track if start button should be shown
+  const [showDialogue, setShowDialogue] = useState(false); // State to track if dialogue should be shown
 
   useEffect(() => {
     // Show the textbox after 1.5 seconds
@@ -48,11 +49,13 @@ function Home() {
     setMode(mode === 'normal' ? 'dialogue' : 'normal');
     setCameraPosition(mode === 'normal' ? [0, 0, 5] : [0, 0, 6]);
     setCanvasKey((prevKey) => prevKey + 1); // Increment key to force reload
+    setShowStartButton(mode == 'normal' ? true : false);
+    setShowDialogue(false);
   };
 
   const startDialogue = () => {
     setShowStartButton(false); // Hide the start button
-    setShowTextBox(true); // Show the dialogue
+    setShowDialogue(true); // Show the dialogue
   };
 
   const adjustIslandForScreenSize = () => {
@@ -115,6 +118,11 @@ function Home() {
           />
         </Suspense>
       </Canvas>
+      {showStartButton && mode === 'dialogue' && (
+        <button className="start-button" onClick={startDialogue}>
+          Start Dialogue
+        </button>
+      )}
       <button className="toggle-button" onClick={toggleMode}>
         {mode === 'normal' ? 'Dialogue' : 'Orbit'}
       </button>
@@ -125,7 +133,7 @@ function Home() {
         />
       )}
 
-      {modelsLoaded && mode === 'dialogue' && (
+      {modelsLoaded && showDialogue && mode === 'dialogue' && (
         <DialogueBox
           text={[
             '',

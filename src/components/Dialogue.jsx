@@ -7,7 +7,7 @@ function DialogueBox({ text }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowContent(true);
-    }, 1500); // Adjust the delay time as needed (in milliseconds)
+    }, 1000); // Adjust the delay time as needed (in milliseconds)
 
     // Clear the timeout to prevent memory leaks
     return () => clearTimeout(timer);
