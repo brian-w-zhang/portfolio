@@ -13,11 +13,17 @@ const Ship = (props) => {
     actions['Take 001'].play();
   }, [actions]);
 
+  let radius = 2;
+  let speed2 = -(2 * Math.PI) / 10;
   // Define variables for orbiting effect
-  const radius = 4; // Radius of orbit
-
-  // comment line out later
-  const speed2 = -(2 * Math.PI) / 10; // Speed of orbit
+  if (window.innerWidth < 768) {
+    // this line was changed
+    radius = 2;
+    speed2 = -(2 * Math.PI) / 6;
+  } else {
+    radius = 3;
+    speed2 = -(2 * Math.PI) / 6;
+  }
 
   // enable for normal orbit, disable/comment out for dialogue
   useFrame((state, delta) => {

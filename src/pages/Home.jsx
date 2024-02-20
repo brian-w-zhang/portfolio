@@ -63,7 +63,8 @@ function Home() {
     let islandRotation = [0.4, 0, 0];
 
     if (window.innerWidth < 768) {
-      screenScale = [0.1, 0.1, 0.1];
+      // this line was changed
+      screenScale = [0.09, 0.09, 0.09];
       screenPosition = [0, 0, 0];
     } else {
       screenScale = [0.15, 0.15, 0.15];
