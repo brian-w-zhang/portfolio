@@ -54,7 +54,7 @@ function Home() {
     let islandRotation = [0.4, 0, 0];
 
     if (window.innerWidth < 768) {
-      screenScale = [0.9, 0.9, 0.9];
+      screenScale = [0.15, 0.15, 0.15];
       screenPosition = [0, 0, 0];
     } else {
       screenScale = [0.15, 0.15, 0.15];
@@ -88,7 +88,7 @@ function Home() {
             maxDistance={200}
           />
         )}
-        <Suspense fallback={<Loader />}>
+        <Suspense fallback={<Loader onLoaderDisappear={() => setModelsLoaded(true)}/>}>
           <directionalLight position={[1, 1, 0]} intensity={4} />
           <ambientLight intensity={0.5} />
           <hemisphereLight
@@ -103,7 +103,7 @@ function Home() {
             scale={islandScale}
             rotation={islandRotation}
             mode={mode}
-            onLoad={() => setModelsLoaded(true)} // Update state when models are loaded
+            // onLoad={() => setModelsLoaded(true)} // Update state when models are loaded
           />
         </Suspense>
       </Canvas>

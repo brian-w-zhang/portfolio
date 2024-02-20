@@ -1,13 +1,10 @@
 import { Html } from '@react-three/drei';
+import CircleLoader from 'react-spinners/CircleLoader';
 
 const Loader = () => {
   return (
-    <Html>
-      <div className="load-background">
-        <div className="loader-container">
-          <div className="loader"></div>
-        </div>
-      </div>
+    <Html fullscreen className="load-background">
+      <CircleLoader color="rgb(255,255,255)" />
     </Html>
   );
 };
