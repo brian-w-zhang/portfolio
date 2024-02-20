@@ -5,6 +5,7 @@ import Loader from '../components/Loader';
 import RocketRock from '../models/RocketRock';
 import BlueSpace from '../models/BlueSpace';
 import Ship from '../models/Ship';
+import Buddy from '../models/Buddy';
 import { OrbitControls } from '@react-three/drei';
 import DialogueBox from '../components/Dialogue';
 import Instructions from '../components/Instructions';
