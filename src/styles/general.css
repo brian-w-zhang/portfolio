@@ -1,15 +1,15 @@
 .main-section {
   width: 100%;
-  height: 100vh;
+  height: 100svh;
   position: relative;
 }
 
 html {
-  height: -webkit-fill-available;
+  height: 100svh;
 }
 
 .canvas-container {
   width: 100%;
-  height: 100vh;
+  height: 100svh;
   background-color: transparent;
 }
