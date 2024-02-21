@@ -15,11 +15,9 @@ const Projects = () => {
       </h1>
 
       <p className="text-slate-500 mt-2 leading-relaxed">
-        I've embarked on numerous projects throughout the years, but these are
-        the ones I hold closest to my heart. Many of them are open-source, so if
-        you come across something that piques your interest, feel free to
-        explore the codebase and contribute your ideas for further enhancements.
-        Your collaboration is highly valued!
+        I'm deeply committed to project based learning, continuously seeking
+        opportunities to expand my knowledge and skillset. Listed below are some
+        highlights that I have thoroughly enjoyed working on.
       </p>
 
       <div className="flex flex-wrap my-20 gap-16">
@@ -48,7 +46,7 @@ const Projects = () => {
                   rel="noopener noreferrer"
                   className="font-semibold text-blue-600"
                 >
-                  Live Link
+                  Link
                 </Link>
                 <img
                   src={arrow}
@@ -61,7 +59,7 @@ const Projects = () => {
         ))}
       </div>
 
-      <hr className="border-slate-200" />
+      {/* <hr className="border-slate-200" /> */}
 
       {/* <CTA /> */}
     </section>

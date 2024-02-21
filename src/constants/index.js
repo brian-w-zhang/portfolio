@@ -176,49 +176,33 @@ export const projects = [
   {
     iconUrl: pricewise,
     theme: 'btn-back-red',
-    name: 'Amazon Price Tracker',
+    name: 'Jarvis',
     description:
-      'Developed a web application that tracks and notifies users of price changes for products on Amazon, helping users find the best deals.',
-    link: 'https://github.com/adrianhajdin/pricewise',
+      'An interactive, 3D, gesture-controlled hologram environment. Use voice commands and natural hand gestures to manipulate 3D objects on a holographic projection, just like in Iron Man.',
+    link: 'https://www.youtube.com/watch?v=qOElePxRUAs',
   },
   {
-    iconUrl: threads,
+    iconUrl: snapgram,
     theme: 'btn-back-green',
-    name: 'Full Stack Threads Clone',
+    name: 'IMY',
     description:
-      'Created a full-stack replica of the popular discussion platform "Threads," enabling users to post and engage in threaded conversations.',
-    link: 'https://github.com/adrianhajdin/threads',
+      'A wholesome, retro-themed social media experience to relive nostalgic snapshots of the past. Designed to rekindle genuine user connection through gamified elements.',
+    link: 'https://github.com/se28-vs-uoftHacks/frontend',
   },
   {
     iconUrl: car,
     theme: 'btn-back-blue',
-    name: 'Car Finding App',
+    name: 'SignEase',
     description:
-      'Designed and built a mobile app for finding and comparing cars on the market, streamlining the car-buying process.',
-    link: 'https://github.com/adrianhajdin/project_next13_car_showcase',
+      'A 3D animated search engine for American Sign Language. Bridging communication gaps with an innovative learning experience, meticulously crafted to foster ASL education and awareness.',
+    link: 'https://github.com/DeerHacks2024/frontend',
   },
   {
     iconUrl: snapgram,
     theme: 'btn-back-pink',
-    name: 'Full Stack Instagram Clone',
+    name: 'Witcher Net',
     description:
-      'Built a complete clone of Instagram, allowing users to share photos and connect with friends in a familiar social media environment.',
-    link: 'https://github.com/adrianhajdin/social_media_app',
-  },
-  {
-    iconUrl: estate,
-    theme: 'btn-back-black',
-    name: 'Real-Estate Application',
-    description:
-      'Developed a web application for real estate listings, facilitating property searches and connecting buyers with sellers.',
-    link: 'https://github.com/adrianhajdin/projects_realestate',
-  },
-  {
-    iconUrl: summiz,
-    theme: 'btn-back-yellow',
-    name: 'AI Summarizer Application',
-    description:
-      'App that leverages AI to automatically generate concise & informative summaries from lengthy text content, or blogs.',
-    link: 'https://github.com/adrianhajdin/project_ai_summarizer',
+      'A visualized, data driven exploration the Witcher book series through Natural Language Processing. A character relationship deep dive using web scraping, NER, and immersive network analysis.',
+    link: 'https://github.com/brian-w-zhang/witcher_project.git',
   },
 ];
