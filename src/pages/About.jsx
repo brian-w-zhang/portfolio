@@ -21,14 +21,16 @@ const About = () => {
 
       <div className="mt-5 flex flex-col gap-3 text-slate-500">
         <p>
-          Software Engineering student at the University of Waterloo,
-          specializing in technical education through hands-on learning and
-          building applications.
+          A full stack developer studying Software Engineering at the University
+          of Waterloo. Driven by a passion for leveraging technology to create
+          meaningful and impactful solutions. In my free time, I enjoy playing
+          badminton, chess, cello, and also like to experiment with graphic
+          design.
         </p>
       </div>
 
       <div className="py-10 flex flex-col">
-        <h3 className="subhead-text text-white">My Skills</h3>
+        <h3 className="subhead-text text-white">Technical Skills</h3>
 
         <div className="mt-16 flex flex-wrap gap-12">
           {skills.map((skill) => (
@@ -47,11 +49,11 @@ const About = () => {
       </div>
 
       <div className="py-16">
-        <h3 className="subhead-text text-white">Work Experience.</h3>
+        <h3 className="subhead-text text-white">Work Experience</h3>
         <div className="mt-5 flex flex-col gap-3 text-slate-500">
           <p>
-            I've worked with all sorts of companies, leveling up my skills and
-            teaming up with smart people. Here's the rundown:
+            I've collaborated with diverse companies, refining my skills
+            alongside talented teams. Here's an overview:
           </p>
         </div>
 
@@ -77,6 +79,7 @@ const About = () => {
                   borderBottomColor: experience.iconBg,
                   boxShadow: 'none',
                 }}
+                dateClassName="text-white mx-3"
               >
                 <div>
                   <h3 className="text-black text-xl font-poppins font-semibold">
@@ -94,7 +97,7 @@ const About = () => {
                   {experience.points.map((point, index) => (
                     <li
                       key={`experience-point-${index}`}
-                      className="text-black-500/50 font-normal pl-1 text-sm"
+                      className="text-black-500 font-normal pl-1 text-sm"
                     >
                       {point}
                     </li>
@@ -106,7 +109,7 @@ const About = () => {
         </div>
       </div>
 
-      <hr className="border-slate-200" />
+      {/* <hr className="border-slate-200" /> */}
 
       {/* <CTA /> */}
     </section>
