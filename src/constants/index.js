@@ -1,4 +1,13 @@
-import { meta, shopify, starbucks, tesla } from '../assets/images';
+import {
+  meta,
+  shopify,
+  starbucks,
+  tesla,
+  zoomers,
+  mcgill,
+  orbital,
+  ta,
+} from '../assets/images';
 import {
   jarvis,
   nlp,
@@ -116,8 +125,8 @@ export const experiences = [
   {
     title: 'Web Developer',
     company_name: 'McGill University',
-    icon: starbucks,
-    iconBg: '#accbe1',
+    icon: mcgill,
+    iconBg: '#fbc3bc',
     date: 'Jan 2024 - Present',
     points: [
       "Individually designed and developed a website using React for McGill University's East Asian Studies Department, servicing 250+ undergraduate students and supporting 20+ professors",
@@ -127,8 +136,8 @@ export const experiences = [
   {
     title: 'Firmware Developer',
     company_name: 'UW Orbital',
-    icon: tesla,
-    iconBg: '#fbc3bc',
+    icon: orbital,
+    iconBg: '#accbe1',
     date: 'Jan 2024 - Present',
     points: [
       'Developed embedded systems driver functions in C/C++ for the CubeSat’s temperature sensor',
@@ -139,7 +148,7 @@ export const experiences = [
   {
     title: 'Chapter President',
     company_name: 'Target Alpha Canada',
-    icon: shopify,
+    icon: ta,
     iconBg: '#b7e4c7',
     date: 'March 2022 - June 2023',
     points: [
@@ -151,8 +160,8 @@ export const experiences = [
   {
     title: 'VP of Marketing',
     company_name: 'Zoomers',
-    icon: meta,
-    iconBg: '#a2d2ff',
+    icon: zoomers,
+    iconBg: '#d6bd6f',
     date: 'Sep 2020 - May 2021',
     points: [
       'Founded a startup apparel company with peers and mentors, raising money for Kids Help Phone through profit donations per unit sold',
