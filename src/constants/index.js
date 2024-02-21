@@ -1,5 +1,8 @@
 import { meta, shopify, starbucks, tesla } from '../assets/images';
 import {
+  jarvis,
+  nlp,
+  asl,
   car,
   contact,
   css,
@@ -174,7 +177,7 @@ export const socialLinks = [
 
 export const projects = [
   {
-    iconUrl: pricewise,
+    iconUrl: jarvis,
     theme: 'btn-back-red',
     name: 'Jarvis',
     description:
@@ -190,7 +193,7 @@ export const projects = [
     link: 'https://github.com/se28-vs-uoftHacks/frontend',
   },
   {
-    iconUrl: car,
+    iconUrl: asl,
     theme: 'btn-back-blue',
     name: 'SignEase',
     description:
@@ -198,7 +201,7 @@ export const projects = [
     link: 'https://github.com/DeerHacks2024/frontend',
   },
   {
-    iconUrl: snapgram,
+    iconUrl: nlp,
     theme: 'btn-back-pink',
     name: 'Witcher Net',
     description:
