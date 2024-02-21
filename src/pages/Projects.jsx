@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-
+import Footer from '../components/Footer';
 // import { CTA } from "../components";
 import { projects } from '../constants';
 import { arrow } from '../assets/icons';
@@ -62,6 +62,7 @@ const Projects = () => {
       {/* <hr className="border-slate-200" /> */}
 
       {/* <CTA /> */}
+      <Footer />
     </section>
   );
 };
