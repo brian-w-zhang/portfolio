@@ -118,7 +118,7 @@ body:has(.card[data-color='green']:hover) {
   transform: rotateZ(15deg);
   will-change: transform;
   box-shadow: 16px 0 30px #2b2b2e;
-  background-color: #ffffff33;
+  background-color: #c6d8fb33;
 }
 
 .block-container .btn-back-red {
@@ -155,7 +155,7 @@ body:has(.card[data-color='green']:hover) {
   z-index: 1;
   width: inherit;
   height: inherit;
-  background-color: #ffffff33;
+  background-color: #85a7df3d;
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   transition: 250ms;

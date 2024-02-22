@@ -55,49 +55,9 @@ import {
 
 export const skills = [
   {
-    imageUrl: figma,
-    name: 'Figma',
-    type: 'n/a',
-  },
-  {
-    imageUrl: java,
-    name: 'Java',
-    type: 'n/a',
-  },
-  {
-    imageUrl: jupyter,
-    name: 'Jupyter',
-    type: 'n/a',
-  },
-  {
-    imageUrl: matlab,
-    name: 'Matlab',
-    type: 'n/a',
-  },
-  {
-    imageUrl: mediapipe,
-    name: 'Mediapipe',
-    type: 'n/a',
-  },
-  {
-    imageUrl: numpy,
-    name: 'NumPy',
-    type: 'n/a',
-  },
-  {
-    imageUrl: opencv,
-    name: 'OpenCV',
-    type: 'n/a',
-  },
-  {
-    imageUrl: pandas,
-    name: 'Pandas',
-    type: 'n/a',
-  },
-  {
-    imageUrl: python,
-    name: 'Python',
-    type: 'n/a',
+    imageUrl: react,
+    name: 'React',
+    type: 'Frontend',
   },
   {
     imageUrl: reactnative,
@@ -105,13 +65,38 @@ export const skills = [
     type: 'n/a',
   },
   {
-    imageUrl: selenium,
-    name: 'Selenium',
+    imageUrl: javascript,
+    name: 'JavaScript',
+    type: 'Frontend',
+  },
+  {
+    imageUrl: typescript,
+    name: 'TypeScript',
+    type: 'Frontend',
+  },
+  {
+    imageUrl: html,
+    name: 'HTML',
+    type: 'Frontend',
+  },
+  {
+    imageUrl: css,
+    name: 'CSS',
+    type: 'Frontend',
+  },
+  {
+    imageUrl: tailwindcss,
+    name: 'Tailwind',
+    type: 'Frontend',
+  },
+  {
+    imageUrl: python,
+    name: 'Python',
     type: 'n/a',
   },
   {
-    imageUrl: sql,
-    name: 'SQL',
+    imageUrl: java,
+    name: 'Java',
     type: 'n/a',
   },
   {
@@ -125,14 +110,24 @@ export const skills = [
     type: 'n/a',
   },
   {
-    imageUrl: css,
-    name: 'CSS',
-    type: 'Frontend',
+    imageUrl: nodejs,
+    name: 'Node.js',
+    type: 'Backend',
   },
   {
     imageUrl: express,
     name: 'Express',
     type: 'Backend',
+  },
+  {
+    imageUrl: mongodb,
+    name: 'MongoDB',
+    type: 'Database',
+  },
+  {
+    imageUrl: sql,
+    name: 'SQL',
+    type: 'n/a',
   },
   {
     imageUrl: git,
@@ -145,64 +140,44 @@ export const skills = [
     type: 'Version Control',
   },
   {
-    imageUrl: html,
-    name: 'HTML',
-    type: 'Frontend',
+    imageUrl: jupyter,
+    name: 'Jupyter',
+    type: 'n/a',
   },
   {
-    imageUrl: javascript,
-    name: 'JavaScript',
-    type: 'Frontend',
+    imageUrl: matlab,
+    name: 'Matlab',
+    type: 'n/a',
   },
   {
-    imageUrl: mongodb,
-    name: 'MongoDB',
-    type: 'Database',
-  },
-  // {
-  //   imageUrl: motion,
-  //   name: 'Motion',
-  //   type: 'Animation',
-  // },
-  // {
-  //   imageUrl: mui,
-  //   name: 'Material-UI',
-  //   type: 'Frontend',
-  // },
-  // {
-  //   imageUrl: nextjs,
-  //   name: 'Next.js',
-  //   type: 'Frontend',
-  // },
-  {
-    imageUrl: nodejs,
-    name: 'Node.js',
-    type: 'Backend',
+    imageUrl: figma,
+    name: 'Figma',
+    type: 'n/a',
   },
   {
-    imageUrl: react,
-    name: 'React',
-    type: 'Frontend',
-  },
-  // {
-  //   imageUrl: redux,
-  //   name: 'Redux',
-  //   type: 'State Management',
-  // },
-  // {
-  //   imageUrl: sass,
-  //   name: 'Sass',
-  //   type: 'Frontend',
-  // },
-  {
-    imageUrl: tailwindcss,
-    name: 'Tailwind',
-    type: 'Frontend',
+    imageUrl: mediapipe,
+    name: 'Mediapipe',
+    type: 'n/a',
   },
   {
-    imageUrl: typescript,
-    name: 'TypeScript',
-    type: 'Frontend',
+    imageUrl: opencv,
+    name: 'OpenCV',
+    type: 'n/a',
+  },
+  {
+    imageUrl: numpy,
+    name: 'NumPy',
+    type: 'n/a',
+  },
+  {
+    imageUrl: pandas,
+    name: 'Pandas',
+    type: 'n/a',
+  },
+  {
+    imageUrl: selenium,
+    name: 'Selenium',
+    type: 'n/a',
   },
 ];
 
