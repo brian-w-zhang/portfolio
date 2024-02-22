@@ -30,7 +30,38 @@ import asl from './asl.svg';
 import nlp from './nlp.svg';
 import jarvis from './jarvis.svg';
 
+import c from './c.svg';
+import cplus from './c++.svg';
+import figma from './figma.svg';
+import java from './java.svg';
+import jupyter from './jupyter.svg';
+import matlab from './matlab.svg';
+import mediapipe from './mediapipe.png';
+import numpy from './numpy.svg';
+import opencv from './opencv.svg';
+import pandas from './pandas.svg';
+import python from './python.svg';
+import reactnative from './react-native.svg';
+import rtos from './rtos.svg';
+import selenium from './selenium.svg';
+import sql from './sql.svg';
+
 export {
+  c,
+  cplus,
+  figma,
+  java,
+  jupyter,
+  matlab,
+  mediapipe,
+  numpy,
+  opencv,
+  pandas,
+  python,
+  reactnative,
+  rtos,
+  selenium,
+  sql,
   jarvis,
   nlp,
   asl,

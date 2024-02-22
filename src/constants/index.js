@@ -9,6 +9,21 @@ import {
   ta,
 } from '../assets/images';
 import {
+  c,
+  cplus,
+  figma,
+  java,
+  jupyter,
+  matlab,
+  mediapipe,
+  numpy,
+  opencv,
+  pandas,
+  python,
+  reactnative,
+  rtos,
+  selenium,
+  sql,
   jarvis,
   nlp,
   asl,
@@ -39,6 +54,76 @@ import {
 } from '../assets/icons';
 
 export const skills = [
+  {
+    imageUrl: figma,
+    name: 'Figma',
+    type: 'n/a',
+  },
+  {
+    imageUrl: java,
+    name: 'Java',
+    type: 'n/a',
+  },
+  {
+    imageUrl: jupyter,
+    name: 'Jupyter',
+    type: 'n/a',
+  },
+  {
+    imageUrl: matlab,
+    name: 'Matlab',
+    type: 'n/a',
+  },
+  {
+    imageUrl: mediapipe,
+    name: 'Mediapipe',
+    type: 'n/a',
+  },
+  {
+    imageUrl: numpy,
+    name: 'NumPy',
+    type: 'n/a',
+  },
+  {
+    imageUrl: opencv,
+    name: 'OpenCV',
+    type: 'n/a',
+  },
+  {
+    imageUrl: pandas,
+    name: 'Pandas',
+    type: 'n/a',
+  },
+  {
+    imageUrl: python,
+    name: 'Python',
+    type: 'n/a',
+  },
+  {
+    imageUrl: reactnative,
+    name: 'Native',
+    type: 'n/a',
+  },
+  {
+    imageUrl: selenium,
+    name: 'Selenium',
+    type: 'n/a',
+  },
+  {
+    imageUrl: sql,
+    name: 'SQL',
+    type: 'n/a',
+  },
+  {
+    imageUrl: c,
+    name: 'C',
+    type: 'n/a',
+  },
+  {
+    imageUrl: cplus,
+    name: 'C++',
+    type: 'n/a',
+  },
   {
     imageUrl: css,
     name: 'CSS',
@@ -84,11 +169,11 @@ export const skills = [
   //   name: 'Material-UI',
   //   type: 'Frontend',
   // },
-  {
-    imageUrl: nextjs,
-    name: 'Next.js',
-    type: 'Frontend',
-  },
+  // {
+  //   imageUrl: nextjs,
+  //   name: 'Next.js',
+  //   type: 'Frontend',
+  // },
   {
     imageUrl: nodejs,
     name: 'Node.js',
