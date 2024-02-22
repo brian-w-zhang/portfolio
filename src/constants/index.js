@@ -74,16 +74,16 @@ export const skills = [
     name: 'MongoDB',
     type: 'Database',
   },
-  {
-    imageUrl: motion,
-    name: 'Motion',
-    type: 'Animation',
-  },
-  {
-    imageUrl: mui,
-    name: 'Material-UI',
-    type: 'Frontend',
-  },
+  // {
+  //   imageUrl: motion,
+  //   name: 'Motion',
+  //   type: 'Animation',
+  // },
+  // {
+  //   imageUrl: mui,
+  //   name: 'Material-UI',
+  //   type: 'Frontend',
+  // },
   {
     imageUrl: nextjs,
     name: 'Next.js',
@@ -99,19 +99,19 @@ export const skills = [
     name: 'React',
     type: 'Frontend',
   },
-  {
-    imageUrl: redux,
-    name: 'Redux',
-    type: 'State Management',
-  },
-  {
-    imageUrl: sass,
-    name: 'Sass',
-    type: 'Frontend',
-  },
+  // {
+  //   imageUrl: redux,
+  //   name: 'Redux',
+  //   type: 'State Management',
+  // },
+  // {
+  //   imageUrl: sass,
+  //   name: 'Sass',
+  //   type: 'Frontend',
+  // },
   {
     imageUrl: tailwindcss,
-    name: 'Tailwind CSS',
+    name: 'Tailwind',
     type: 'Frontend',
   },
   {

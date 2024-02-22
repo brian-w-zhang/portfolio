@@ -44,6 +44,9 @@ const About = () => {
                   className="w-1/2 h-1/2 object-contain"
                 />
               </div>
+              <p className="text-sm text-center mt-20 py-1 text-slate-300">
+                {skill.name}
+              </p>
             </div>
           ))}
         </div>
