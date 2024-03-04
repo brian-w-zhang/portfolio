@@ -9,6 +9,7 @@ import {
   ta,
 } from '../assets/images';
 import {
+  webring,
   c,
   cplus,
   figma,
@@ -232,6 +233,11 @@ export const experiences = [
 ];
 
 export const socialLinks = [
+  {
+    name: 'Webring',
+    iconUrl: webring,
+    link: 'https://se-webring.xyz/',
+  },
   {
     name: 'GitHub',
     iconUrl: github,

@@ -29,6 +29,7 @@ import soundoff from './soundoff.png';
 import asl from './asl.svg';
 import nlp from './nlp.svg';
 import jarvis from './jarvis.svg';
+import webring from './webring.svg';
 
 import c from './c.png';
 import cplus from './c++.png';
@@ -93,4 +94,5 @@ export {
   contact,
   soundon,
   soundoff,
+  webring
 };
