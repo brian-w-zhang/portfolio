@@ -52,6 +52,8 @@ import {
   tailwindcss,
   threads,
   typescript,
+  flower,
+  fridge,
 } from '../assets/icons';
 
 export const skills = [
@@ -261,7 +263,7 @@ export const projects = [
   },
   {
     iconUrl: snapgram,
-    theme: 'btn-back-green',
+    theme: 'btn-back-orange',
     name: 'IMY',
     description:
       'A wholesome, retro-themed social media experience to relive nostalgic snapshots of the past. Designed to rekindle genuine user connection through gamified elements.',
@@ -269,7 +271,7 @@ export const projects = [
   },
   {
     iconUrl: asl,
-    theme: 'btn-back-blue',
+    theme: 'btn-back-yellow',
     name: 'SignEase',
     description:
       'A 3D animated search engine for American Sign Language. Bridging communication gaps with an innovative learning experience, meticulously crafted to foster ASL education and awareness.',
@@ -277,10 +279,26 @@ export const projects = [
   },
   {
     iconUrl: nlp,
-    theme: 'btn-back-pink',
+    theme: 'btn-back-green',
     name: 'Witcher Net',
     description:
       'A visualized, data driven exploration the Witcher book series through Natural Language Processing. A character relationship deep dive using web scraping, NER, and immersive network analysis.',
     link: 'https://github.com/brian-w-zhang/witcher_project.git',
+  },
+  {
+    iconUrl: flower,
+    theme: 'btn-back-blue',
+    name: 'ARIA',
+    description:
+      'An Accessible Refugee Information App. Leverages a multilingual voice assistant and a fine tuned large language model trained on vetted refugee claim data for convenient legal education.',
+    link: 'https://github.com/geraldyywang/ARIA',
+  },
+  {
+    iconUrl: fridge,
+    theme: 'btn-back-pink',
+    name: 'PocketFridge',
+    description:
+      'A cute virtual pantry for all of your groceries. Scan a receipt, and a trained ML model takes care of uploading the items. Utilizes Google Gemini for tailored AI recipes and expiry date estimation.',
+    link: 'https://github.com/genai-genesis/frontend',
   },
 ];

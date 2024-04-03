@@ -47,6 +47,10 @@ import rtos from './rtos.svg';
 import selenium from './selenium.svg';
 import sql from './sql.svg';
 
+import flower from './flower.svg';
+import fridge from './fridge.svg';
+
+
 export {
   c,
   cplus,
@@ -94,5 +98,7 @@ export {
   contact,
   soundon,
   soundoff,
-  webring
+  webring,
+  flower,
+  fridge,
 };
