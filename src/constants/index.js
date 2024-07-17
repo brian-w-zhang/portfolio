@@ -7,6 +7,7 @@ import {
   mcgill,
   orbital,
   ta,
+  cynorix,
 } from '../assets/images';
 import {
   webring,
@@ -186,6 +187,18 @@ export const skills = [
 
 export const experiences = [
   {
+    title: 'Software Engineer',
+    company_name: 'Cynorix',
+    icon: cynorix,
+    iconBg: '#ad6168',
+    date: 'May 2024 - Present',
+    points: [
+      "Increased encryption speed by 30% through the implementation of a mathematically optimized compression algorithm for a secure file sharing app, reducing file transfer times and enhancing overall user experience.",
+      "Spearheaded the development of innovative features for a comprehensive 2FA system across Android, macOS, Windows, and iOS platforms, leveraging Bluetooth device scanning and SSID verification to bolster security measures and user authentication.",
+      "Orchestrated the development of a compliant iOS application focused on 2FA using Swift, prioritizing seamless user experience and robust data privacy. Implemented new features that significantly enhanced usability, contributing to a more intuitive and secure authentication process for users.",
+    ],
+  },
+  {
     title: 'Web Developer',
     company_name: 'McGill University',
     icon: mcgill,
@@ -201,7 +214,7 @@ export const experiences = [
     company_name: 'UW Orbital',
     icon: orbital,
     iconBg: '#accbe1',
-    date: 'Jan 2024 - Present',
+    date: 'Jan 2024 - May 2024',
     points: [
       'Developed embedded systems driver functions in C/C++ for the CubeSat’s temperature sensor',
       'Created a thermal management task with FreeRTOS, ensuring precise temperature data collection via sensor datasheets and I2C protocol for telemetry purposes, enhancing CubeSat reliability',

@@ -131,7 +131,7 @@ function Home() {
 
       {modelsLoaded && showTextBox && mode === 'normal' && (
         <Instructions
-          text={[``, 'Click and drag to rotate.', 'Scroll to zoom in and out.']}
+          text={[``, 'Click and drag to rotate.', 'Scroll or pinch to zoom.']}
         />
       )}
 
@@ -143,8 +143,8 @@ function Home() {
             I'm Brian. 
             Welcome to my online portfolio!`,
             "I'm a Software Engineering student at the University of Waterloo.",
-            `Currently, I'm a Web Developer for Mcgill University,
-            and a Firmware Developer for UW Orbital.`,
+            `Currently, I'm a Software Engineer at Cynorix,
+            and a Web Developer for Mcgill University.`,
             `Click 'About' for more of my skills and experience,
             and 'Projects' to see cool stuff I've brought to life.`,
             'Feel free to contact me by sending a message!',

@@ -8,8 +8,10 @@ import zoomers from './zoomers_logo.png';
 import mcgill from './mcgill_logo.png';
 import orbital from './orbital_logo.png';
 import ta from './target_alpha_logo.png';
+import cynorix from './cynorix_logo.png';
 
 export {
+  cynorix,
   zoomers,
   mcgill,
   orbital,
