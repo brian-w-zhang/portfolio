@@ -62,7 +62,10 @@ export const CharacterController = () => {
 
   useEffect(() => {
     const onMouseDown = (e) => {
+      // isClicking.current = true;
+      // make false for the sake of using orbit controls to figure out model positions
       isClicking.current = true;
+
     };
     const onMouseUp = (e) => {
       isClicking.current = false;
@@ -158,7 +161,7 @@ export const CharacterController = () => {
       rb.current.setLinvel(vel, true);
     }
 
-    // CAMERA
+    // // CAMERA
     container.current.rotation.y = MathUtils.lerp(
       container.current.rotation.y,
       rotationTarget.current,

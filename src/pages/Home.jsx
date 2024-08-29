@@ -96,13 +96,28 @@ function Home() {
             enableZoom={true}
             zoomSpeed={1}
             minDistance={2}
-            maxDistance={200}
+            maxDistance={100}
           />
         )}
         <Suspense
           fallback={<Loader onLoaderDisappear={() => setModelsLoaded(true)} />}
         >
-          <directionalLight position={[1, 1, 0]} intensity={4} />
+          {/* <directionalLight position={[1, 1, 0]} intensity={4} /> */}
+          <directionalLight
+            castShadow
+            color={"#ffffff"}
+            intensity={2}
+            position={[10, 5, 4]}
+            shadow-bias={-0.0005}
+            shadow-mapSize-width={1024}
+            shadow-mapSize-height={1024}
+            shadow-camera-near={0.01}
+            shadow-camera-far={20}
+            shadow-camera-top={6}
+            shadow-camera-bottom={-6}
+            shadow-camera-left={-6.2}
+            shadow-camera-right={6.4}
+          />
           <ambientLight intensity={0.5} />
           <hemisphereLight
             skyColor="#b1e1ff"

@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
 import Explore from './pages/Explore';
+import Flight from './pages/Flight';
 // import Contact from './pages/Contact';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="projects" element={<Projects />} />
           <Route path="explore" element={<Explore />} />
+          <Route path="flight" element={<Flight />} />
           {/* <Route path="contact" element={<Contact />} /> */}
         </Routes>
         {/* <Footer /> */}

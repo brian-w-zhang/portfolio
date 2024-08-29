@@ -16,7 +16,7 @@ const Navbar = () => {
         >
           About
         </NavLink>
-        <NavLink
+        <NavLink 
           to="/projects"
           className={({ isActive }) =>
             isActive ? 'blue-gradient_text' : 'text-white'
@@ -31,6 +31,14 @@ const Navbar = () => {
           }
         >
           Explore
+        </NavLink>
+        <NavLink
+          to="/flight"
+          className={({ isActive }) =>
+            isActive ? 'blue-gradient_text' : 'text-white'
+          }
+        >
+          Flight
         </NavLink>
       </nav>
     </header>

@@ -23,7 +23,7 @@ function Explore() {
             touchAction: "none",
           }}
         >
-          <color attach="background" args={["#ececec"]} />
+          <color attach="background" args={["#020a1c"]} />
           <Experience />
         </Canvas>
       </KeyboardControls>
