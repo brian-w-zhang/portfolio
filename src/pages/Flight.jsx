@@ -8,16 +8,14 @@ import { SphereEnv } from "../components/SphereEnv";
 import { Rocket } from "../components/Rocket";
 import { Targets } from "../components/Targets";
 import { MotionBlur } from "../components/MotionBlur";
-
 import BlueSpace from '../models/BlueSpace';
-
+import Loader from '../components/Loader'; // Import the Loader component
 
 function Flight() {
   return (
     <div className="w-full h-screen relative">
       <Canvas shadows>
-        <Suspense fallback={null}>
-          {/* <SphereEnv /> */}
+        <Suspense fallback={<Loader />}>
           <BlueSpace mode={'normal'} />
           <Environment background={false} files={"/textures/earth-horizon.hdr"} />
           <ambientLight intensity={0} />
@@ -47,12 +45,12 @@ function Flight() {
           <EffectComposer>
             <MotionBlur />
             <HueSaturation
-              blendFunction={BlendFunction.NORMAL} // blend mode
-              hue={-0.15} // hue in radians
-              saturation={0.1} // saturation in radians
+              blendFunction={BlendFunction.NORMAL}
+              hue={-0.15}
+              saturation={0.1}
             />
           </EffectComposer>
-          </Suspense>
+        </Suspense>
       </Canvas>
     </div>
   );

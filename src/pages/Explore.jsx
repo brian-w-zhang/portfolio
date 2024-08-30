@@ -1,6 +1,9 @@
+import React, { Suspense } from "react";
 import { KeyboardControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Experience } from "../components/Experience";
+import Loader from '../components/Loader'; // Import the Loader component
+
 
 const keyboardMap = [
   { name: "forward", keys: ["ArrowUp", "KeyW"] },
@@ -23,8 +26,10 @@ function Explore() {
             touchAction: "none",
           }}
         >
-          <color attach="background" args={["#020a1c"]} />
-          <Experience />
+          <Suspense fallback={<Loader />}>
+            {/* <color attach="background" args={["#020a1c"]} /> */}
+            <Experience />
+          </Suspense>
         </Canvas>
       </KeyboardControls>
     </div>
