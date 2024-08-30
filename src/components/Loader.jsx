@@ -1,12 +1,15 @@
-import { Html } from '@react-three/drei';
-import CircleLoader from 'react-spinners/CircleLoader';
-import Spinner from '/astronaut-flipping.mp4';
+import { Html, useProgress } from '@react-three/drei';
+import Spinner from '/flipping.mp4';
 
 const Loader = () => {
+  const { progress } = useProgress();
+
   return (
-    <Html fullscreen className="load-background">
-      {/* <CircleLoader color="rgb(255,255,255)" /> */}
-      <video src={Spinner} autoPlay loop muted />
+    <Html fullscreen className="h-full w-full flex flex-col justify-center items-center bg-black">
+      <video src={Spinner} autoPlay loop muted className="w-32 h-32"/>
+      <div className="mt-5 text-xl text-white" style={{ fontFamily: "'Press Start 2P', sans-serif" }}>
+        {Math.round(progress)}%
+      </div>
     </Html>
   );
 };
