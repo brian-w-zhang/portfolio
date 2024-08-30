@@ -58,7 +58,7 @@ export const Experience = () => {
       {/* Remove OrbitControls when doing keyboard interaction and not looking for models in the scene to adjust properties */}
       {/* <OrbitControls /> */}
       {/* <Environment preset="warehouse" /> */}
-      {/* <Environment background={false} files={"/textures/earth-horizon.hdr"} /> */}
+      <Environment background={false} files={"/textures/earth-horizon.hdr"} />
 
       <ambientLight intensity={1} />
       <directionalLight
