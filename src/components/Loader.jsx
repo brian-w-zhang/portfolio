@@ -1,5 +1,5 @@
 import { Html, useProgress } from '@react-three/drei';
-import Spinner from '/flipping.mp4';
+import Spinner from '/flipping-480.mp4';
 
 const Loader = () => {
   const { progress } = useProgress();
