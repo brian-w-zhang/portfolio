@@ -1,9 +1,8 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Quaternion, TorusGeometry, Vector3 } from "three";
 import { mergeBufferGeometries } from "three-stdlib";
 import { useFrame } from "@react-three/fiber";
 import { rocketPosition } from "./Rocket";
-
 
 function randomPoint(scale) {
   return new Vector3(
@@ -27,9 +26,10 @@ export function Targets() {
         hit: false,
       });
     }
-
     return arr;
   });
+
+  const [openYouTubeLink, setOpenYouTubeLink] = useState(false);
 
   const geometry = useMemo(() => {
     let geo;
@@ -52,11 +52,10 @@ export function Targets() {
   }, [targets]);
 
   useFrame(() => {
-    targets.forEach((target, i) => {
-      // const v = planePosition.clone().sub(target.center);
+    let collisionOccurred = false;
+    targets.forEach((target) => {
       const v = rocketPosition.clone().sub(target.center);
       const dist = target.direction.dot(v);
-      // const projected = planePosition
       const projected = rocketPosition
         .clone()
         .sub(target.direction.clone().multiplyScalar(dist));
@@ -64,14 +63,22 @@ export function Targets() {
       const hitDist = projected.distanceTo(target.center);
       if (hitDist < TARGET_RAD) {
         target.hit = true;
+        collisionOccurred = true;
       }
     });
 
-    const atLeastOneHit = targets.find((target) => target.hit);
-    if (atLeastOneHit) {
+    if (collisionOccurred) {
       setTargets(targets.filter((target) => !target.hit));
+      setOpenYouTubeLink(true);
     }
   });
+
+  useEffect(() => {
+    if (openYouTubeLink) {
+      window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
+      setOpenYouTubeLink(false);
+    }
+  }, [openYouTubeLink]);
 
   return (
     <mesh geometry={geometry}>
