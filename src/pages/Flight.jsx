@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { PerspectiveCamera, Environment } from "@react-three/drei";
+import { PerspectiveCamera, Environment, OrbitControls } from "@react-three/drei";
 import { EffectComposer, HueSaturation } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
 import { Landscape } from "../components/Landscape";
@@ -9,7 +9,8 @@ import { Rocket } from "../components/Rocket";
 import { Targets } from "../components/Targets";
 import { MotionBlur } from "../components/MotionBlur";
 import BlueSpace from '../models/BlueSpace';
-import Loader from '../components/Loader'; // Import the Loader component
+import Loader from '../components/Loader'; 
+import { City } from '../models/City';
 
 function Flight() {
   return (
@@ -22,8 +23,12 @@ function Flight() {
 
           <PerspectiveCamera makeDefault position={[0, 10, 10]} />
 
-          <Landscape />
+          <City position={[20, -1, 7]} scale={0.5}/>
+          {/* <Landscape /> */}
+          {/* Comment out rocket for testing */}
           <Rocket />
+          {/* Add OrbitControls for testing */}
+          <OrbitControls />
           <Targets />
 
           <directionalLight
@@ -50,6 +55,8 @@ function Flight() {
               saturation={0.1}
             />
           </EffectComposer>
+
+          
         </Suspense>
       </Canvas>
     </div>

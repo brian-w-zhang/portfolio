@@ -1,3 +1,5 @@
+// File for flying rocket model that the user
+
 import React, { useEffect, useRef } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
@@ -7,7 +9,7 @@ import { updatePlaneAxis } from '../utils/controls'
 const x = new Vector3(1, 0, 0)
 const y = new Vector3(0, 1, 0)
 const z = new Vector3(0, 0, 1)
-export const rocketPosition = new Vector3(0, 3, 7)
+export const rocketPosition = new Vector3(0, 4, 10)
 
 const delayedRotMatrix = new Matrix4()
 const delayedQuaternion = new Quaternion()

@@ -41,19 +41,19 @@ export function updatePlaneAxis(x, y, z, planePosition, camera) {
   }
 
   if (controls["w"]) {
-    pitchVelocity += 0.0025;
+    pitchVelocity += 0.002;
   }
 
   if (controls["s"]) {
-    pitchVelocity -= 0.0025;
+    pitchVelocity -= 0.002;
   }
 
   if (controls["a"]) { // Add this block
-    rollVelocity += 0.0025;
+    rollVelocity += 0.002;
   }
 
   if (controls["d"]) { // Add this block
-    rollVelocity -= 0.0025;
+    rollVelocity -= 0.002;
   }
 
   if (controls["r"]) {
@@ -64,7 +64,7 @@ export function updatePlaneAxis(x, y, z, planePosition, camera) {
     x.set(1, 0, 0);
     y.set(0, 1, 0);
     z.set(0, 0, 1);
-    planePosition.set(0, 3, 7);
+    planePosition.set(0, 4, 10);
   }
 
   x.applyAxisAngle(z, jawVelocity);
@@ -89,7 +89,7 @@ export function updatePlaneAxis(x, y, z, planePosition, camera) {
   }
   turbo = Math.min(Math.max(turbo, 0), 1);
 
-  let turboSpeed = easeOutQuad(turbo) * 0.02;
+  let turboSpeed = easeOutQuad(turbo) * 0.04;
 
   camera.fov = 45 + turboSpeed * 900;
   camera.updateProjectionMatrix();
