@@ -1,8 +1,9 @@
-import React, { Suspense } from "react";
+import React, { useEffect, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { PerspectiveCamera, Environment, OrbitControls } from "@react-three/drei";
+import { PerspectiveCamera, Environment } from "@react-three/drei";
 import { EffectComposer, HueSaturation } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
+import { useSpring, animated } from '@react-spring/three';
 import { Landscape } from "../components/Landscape";
 import { SphereEnv } from "../components/SphereEnv";
 import { Rocket } from "../components/Rocket";
@@ -11,8 +12,32 @@ import { MotionBlur } from "../components/MotionBlur";
 import BlueSpace from '../models/BlueSpace';
 import Loader from '../components/Loader'; 
 import { City } from '../models/City';
+import { startAnimation, endAnimation } from '../utils/animationState'; // Import animation state functions
+import { controls } from '../utils/controls'; // Import controls
+
+
 
 function Flight() {
+  const { position: cityPosition } = useSpring({
+    from: { position: [20, -1, -700] },
+    to: { position: [20, -1, 7] },
+    config: { duration: 3000 },
+    onStart: () => {
+      startAnimation(); // Disable input when animation starts
+      controls["shift"] = true; // Simulate Shift key press
+    },
+    onRest: () => {
+      controls["shift"] = false; // Release Shift key press
+      endAnimation(); // Re-enable input when animation ends
+    },
+  });
+
+  const { position: targetsPosition } = useSpring({
+    from: { position: [0, -0, -700] },
+    to: { position: [0, 0, 0] },
+    config: { duration: 3000 },
+  });
+
   return (
     <div className="w-full h-screen relative">
       <Canvas shadows>
@@ -23,13 +48,15 @@ function Flight() {
 
           <PerspectiveCamera makeDefault position={[0, 10, 10]} />
 
-          <City position={[20, -1, 7]} scale={0.5}/>
-          {/* <Landscape /> */}
-          {/* Comment out rocket for testing */}
+          <animated.group position={cityPosition}>
+            <City scale={0.5} />
+          </animated.group>
+
           <Rocket />
-          {/* Add OrbitControls for testing */}
-          <OrbitControls />
-          <Targets />
+
+          <animated.group position={targetsPosition}>
+            <Targets />
+          </animated.group>
 
           <directionalLight
             castShadow
@@ -55,8 +82,6 @@ function Flight() {
               saturation={0.1}
             />
           </EffectComposer>
-
-          
         </Suspense>
       </Canvas>
     </div>

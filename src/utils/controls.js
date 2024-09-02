@@ -1,3 +1,5 @@
+import { isAnimating } from './animationState';
+
 function easeOutQuad(x) {
   return 1 - (1 - x) * (1 - x);
 }
@@ -5,10 +7,15 @@ function easeOutQuad(x) {
 export let controls = {};
 
 window.addEventListener("keydown", (e) => {
-  controls[e.key.toLowerCase()] = true;
+  if (!isAnimating) { // Only register input if not animating
+    controls[e.key.toLowerCase()] = true;
+  }
 });
+
 window.addEventListener("keyup", (e) => {
-  controls[e.key.toLowerCase()] = false;
+  if (!isAnimating) { // Only register input if not animating
+    controls[e.key.toLowerCase()] = false;
+  }
 });
 
 let maxVelocity = 0.04;
@@ -89,7 +96,7 @@ export function updatePlaneAxis(x, y, z, planePosition, camera) {
   }
   turbo = Math.min(Math.max(turbo, 0), 1);
 
-  let turboSpeed = easeOutQuad(turbo) * 0.04;
+  let turboSpeed = easeOutQuad(turbo) * 0.06;
 
   camera.fov = 45 + turboSpeed * 900;
   camera.updateProjectionMatrix();
