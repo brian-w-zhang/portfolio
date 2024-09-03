@@ -9,7 +9,7 @@ Title: City Grid Block
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function City({ position = [0, 0, 0], scale = 1, ...props }) {
+export function City({ position = [20, -1, 7], scale = 1, ...props }) {
   const { nodes, materials } = useGLTF('/models/city_grid_block.glb')
   return (
     <group {...props} dispose={null} position={position} scale={scale}>

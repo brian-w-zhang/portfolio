@@ -1,27 +1,26 @@
-import React, { useEffect, Suspense } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { PerspectiveCamera, Environment } from "@react-three/drei";
 import { EffectComposer, HueSaturation } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
 import { useSpring, animated } from '@react-spring/three';
-import { Landscape } from "../components/Landscape";
-import { SphereEnv } from "../components/SphereEnv";
 import { Rocket } from "../components/Rocket";
 import { Targets } from "../components/Targets";
 import { MotionBlur } from "../components/MotionBlur";
 import BlueSpace from '../models/BlueSpace';
 import Loader from '../components/Loader'; 
 import { City } from '../models/City';
-import { startAnimation, endAnimation } from '../utils/animationState'; // Import animation state functions
-import { controls } from '../utils/controls'; // Import controls
+import { startAnimation, endAnimation } from '../utils/animationState'; 
+import { controls } from '../utils/controls';
+import TextCollider from "../components/TextCollider"; // Import TextCollider
 
 
 
 function Flight() {
   const { position: cityPosition } = useSpring({
-    from: { position: [20, -1, -700] },
-    to: { position: [20, -1, 7] },
-    config: { duration: 3000 },
+    from: { position: [0, 0, -500] },
+    to: { position: [0, 0, 0] },
+    config: { duration: 2500 },
     onStart: () => {
       startAnimation(); // Disable input when animation starts
       controls["shift"] = true; // Simulate Shift key press
@@ -31,12 +30,21 @@ function Flight() {
       endAnimation(); // Re-enable input when animation ends
     },
   });
+  
+  // State to handle YouTube link opening
+  const [openYouTubeLink, setOpenYouTubeLink] = useState(null);
 
-  const { position: targetsPosition } = useSpring({
-    from: { position: [0, -0, -700] },
-    to: { position: [0, 0, 0] },
-    config: { duration: 3000 },
-  });
+  const handleCollision = (url) => {
+    setOpenYouTubeLink(url);
+  };
+
+  useEffect(() => {
+    if (openYouTubeLink) {
+      window.open(openYouTubeLink, "_blank");
+      setOpenYouTubeLink(null);
+    }
+  }, [openYouTubeLink]);
+
 
   return (
     <div className="w-full h-screen relative">
@@ -50,13 +58,22 @@ function Flight() {
 
           <animated.group position={cityPosition}>
             <City scale={0.5} />
+            <Targets />
+            <TextCollider
+              text="ABOUT"
+              position={[-9, 5, -10]} // Adjust position as needed
+              url="https://www.youtube.com/watch?v=OXtZfPZIex4"
+              onCollision={handleCollision}
+            />
+            <TextCollider
+            text="PROJECTS"
+            position={[2, 5, -10]} // Adjust position as needed
+            url="https://www.youtube.com/watch?v=c4pBkDV-H5U"
+            onCollision={handleCollision}
+            />
           </animated.group>
 
           <Rocket />
-
-          <animated.group position={targetsPosition}>
-            <Targets />
-          </animated.group>
 
           <directionalLight
             castShadow
