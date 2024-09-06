@@ -19,8 +19,8 @@ export function Targets() {
     const arr = [];
     for (let i = 0; i < 30; i++) {
       arr.push({
-        center: randomPoint(new Vector3(17, 2, 11)).add(
-          new Vector3(-2, 2 + Math.random() * 2, -13)
+        center: randomPoint(new Vector3(7, 0.5, 4)).add(
+          new Vector3(-0.5, 1.6 + Math.random() * 1.5, -1.4)
         ),
         direction: randomPoint().normalize(),
         hit: false,

@@ -46,8 +46,8 @@ function TextCollider({ text, position, url, onCollision }) {
         <Text3D
           key={index}
           font="/test-font.json"
-          position={[index * 1, 0, 0]}
-          size={1}
+          position={[index * 0.5, 0, 0]}
+          size={0.5}
           height={0.2}
           curveSegments={32}
           bevelEnabled

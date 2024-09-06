@@ -4,7 +4,7 @@ import { PerspectiveCamera, Environment } from "@react-three/drei";
 import { EffectComposer, HueSaturation } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
 import { useSpring, animated } from '@react-spring/three';
-import { Rocket } from "../components/Rocket";
+import { Rocket, rocketPosition } from "../components/Rocket";
 import { Targets } from "../components/Targets";
 import { MotionBlur } from "../components/MotionBlur";
 import BlueSpace from '../models/BlueSpace';
@@ -17,6 +17,11 @@ import TextCollider from "../components/TextCollider"; // Import TextCollider
 
 
 function Flight() {
+  useEffect(() => {
+    // Reset rocketPosition when Flight component mounts
+    rocketPosition.set(0, 4, 15);
+  }, []);
+
   const { position: cityPosition } = useSpring({
     from: { position: [0, 0, -500] },
     to: { position: [0, 0, 0] },
@@ -57,17 +62,17 @@ function Flight() {
           <PerspectiveCamera makeDefault position={[0, 10, 10]} />
 
           <animated.group position={cityPosition}>
-            <City scale={0.5} />
+            <City position = {[8, 1, 7]} scale={0.2} />
             <Targets />
             <TextCollider
               text="ABOUT"
-              position={[-9, 5, -10]} // Adjust position as needed
+              position={[-5, 4.5, -1]} // Adjust position as needed
               url="https://www.youtube.com/watch?v=OXtZfPZIex4"
               onCollision={handleCollision}
             />
             <TextCollider
             text="PROJECTS"
-            position={[2, 5, -10]} // Adjust position as needed
+            position={[2, 4.5, -1]} // Adjust position as needed
             url="https://www.youtube.com/watch?v=c4pBkDV-H5U"
             onCollision={handleCollision}
             />

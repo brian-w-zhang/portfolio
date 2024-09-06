@@ -9,7 +9,7 @@ import { updatePlaneAxis } from '../utils/controls'
 const x = new Vector3(1, 0, 0)
 const y = new Vector3(0, 1, 0)
 const z = new Vector3(0, 0, 1)
-export const rocketPosition = new Vector3(0, 4, 20)
+export const rocketPosition = new Vector3(0, 4, 15)
 
 const delayedRotMatrix = new Matrix4()
 const delayedQuaternion = new Quaternion()
