@@ -6,21 +6,23 @@ import About from './pages/About';
 import Projects from './pages/Projects';
 import Explore from './pages/Explore';
 import Flight from './pages/Flight';
-// import Contact from './pages/Contact';
+import { AnimatePresence } from 'framer-motion'; // Import AnimatePresence
 
 function App() {
   return (
     <main className="bg-custom-background">
       <Router>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Flight />} />
-          <Route path="about" element={<About />} />
-          <Route path="projects" element={<Projects />} />
-          <Route path="explore" element={<Explore />} />
-          <Route path="flight" element={<Flight />} />
-          {/* <Route path="contact" element={<Contact />} /> */}
-        </Routes>
+          <AnimatePresence mode='wait'> {/* Wrap your Routes in AnimatePresence */}
+            <Routes>
+              <Route path="/" element={<Flight />} />
+              <Route path="about" element={<About />} />
+              <Route path="projects" element={<Projects />} />
+              <Route path="explore" element={<Explore />} />
+              <Route path="flight" element={<Flight />} />
+              {/* <Route path="contact" element={<Contact />} /> */}
+            </Routes>
+          </AnimatePresence>
         {/* <Footer /> */}
       </Router>
     </main>
