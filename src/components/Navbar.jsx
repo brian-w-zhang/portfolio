@@ -7,7 +7,7 @@ const Navbar = () => {
       <NavLink to="/" className={'w-10 h-10 items-center justify-center flex'}>
         <img src={planet} />
       </NavLink>
-      <nav className="flex text-lg gap-7 font-medium">
+      {/* <nav className="flex text-lg gap-7 font-medium">
         <NavLink
           to="/about"
           className={({ isActive }) =>
@@ -40,7 +40,7 @@ const Navbar = () => {
         >
           Flight
         </NavLink>
-      </nav>
+      </nav> */}
     </header>
   );
 };

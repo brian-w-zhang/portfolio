@@ -1,13 +1,12 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useRef, useMemo } from "react";
 import { Text3D } from "@react-three/drei";
-import { Vector3, MeshPhysicalMaterial, Raycaster } from "three";
+import { MeshPhysicalMaterial, Box3 } from "three";
 import { useFrame } from "@react-three/fiber";
 import { rocketPosition } from "./Rocket"; 
 
-function TextCollider({ text, position, url, onCollision }) {
+function TextCollider({ text, position, route, onCollision }) {
   const groupRef = useRef();
-  const [lastRocketPosition, setLastRocketPosition] = useState(new Vector3());
-  const raycaster = useMemo(() => new Raycaster(), []);
+  const boundingBox = useRef(new Box3());
 
   const material = useMemo(() => new MeshPhysicalMaterial({
     color: 'black',
@@ -24,19 +23,11 @@ function TextCollider({ text, position, url, onCollision }) {
 
   useFrame(() => {
     if (groupRef.current) {
-      const direction = new Vector3().subVectors(rocketPosition, lastRocketPosition).normalize();
-      raycaster.set(lastRocketPosition, direction);
+      boundingBox.current.setFromObject(groupRef.current);
       
-      const intersects = raycaster.intersectObjects(groupRef.current.children, true);
-      
-      if (intersects.length > 0) {
-        const distance = lastRocketPosition.distanceTo(rocketPosition);
-        if (intersects[0].distance <= distance) {
-          onCollision(url);
-        }
+      if (boundingBox.current.containsPoint(rocketPosition)) {
+        onCollision(route);
       }
-      
-      setLastRocketPosition(rocketPosition.clone());
     }
   });
 
@@ -46,9 +37,9 @@ function TextCollider({ text, position, url, onCollision }) {
         <Text3D
           key={index}
           font="/test-font.json"
-          position={[index * 0.5, 0, 0]}
-          size={0.5}
-          height={0.2}
+          position={[index * 0.3, 0, 0]}
+          size={0.3}
+          height={0.15}
           curveSegments={32}
           bevelEnabled
           bevelThickness={0.03}

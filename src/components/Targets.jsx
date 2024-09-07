@@ -12,15 +12,15 @@ function randomPoint(scale) {
   ).multiply(scale || new Vector3(1, 1, 1));
 }
 
-const TARGET_RAD = 0.125;
+const TARGET_RAD = 0.1;
 
 export function Targets() {
   const [targets, setTargets] = useState(() => {
     const arr = [];
     for (let i = 0; i < 30; i++) {
       arr.push({
-        center: randomPoint(new Vector3(7, 0.5, 4)).add(
-          new Vector3(-0.5, 1.6 + Math.random() * 1.5, -1.4)
+        center: randomPoint(new Vector3(4, 0.1, 2)).add(
+          new Vector3(-0.51, 1.6 + Math.random() * 1.5, -1)
         ),
         direction: randomPoint().normalize(),
         hit: false,
@@ -69,7 +69,7 @@ export function Targets() {
 
     if (collisionOccurred) {
       setTargets(targets.filter((target) => !target.hit));
-      setOpenYouTubeLink(true);
+      // setOpenYouTubeLink(true);
     }
   });
 

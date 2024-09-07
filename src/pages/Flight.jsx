@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { PerspectiveCamera, Environment } from "@react-three/drei";
+import { PerspectiveCamera, Environment, OrbitControls } from "@react-three/drei";
 import { EffectComposer, HueSaturation } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
 import { useSpring, animated } from '@react-spring/three';
@@ -12,14 +12,17 @@ import Loader from '../components/Loader';
 import { City } from '../models/City';
 import { startAnimation, endAnimation } from '../utils/animationState'; 
 import { controls } from '../utils/controls';
-import TextCollider from "../components/TextCollider"; // Import TextCollider
+import TextCollider from "../components/TextCollider"; 
+import { useNavigate } from 'react-router-dom'; // Import 
 
 
 
 function Flight() {
+  const navigate = useNavigate();
+
   useEffect(() => {
     // Reset rocketPosition when Flight component mounts
-    rocketPosition.set(0, 4, 15);
+    rocketPosition.set(0, 4, 9);
   }, []);
 
   const { position: cityPosition } = useSpring({
@@ -35,20 +38,10 @@ function Flight() {
       endAnimation(); // Re-enable input when animation ends
     },
   });
-  
-  // State to handle YouTube link opening
-  const [openYouTubeLink, setOpenYouTubeLink] = useState(null);
 
-  const handleCollision = (url) => {
-    setOpenYouTubeLink(url);
+  const handleCollision = (route) => {
+    navigate(route);
   };
-
-  useEffect(() => {
-    if (openYouTubeLink) {
-      window.open(openYouTubeLink, "_blank");
-      setOpenYouTubeLink(null);
-    }
-  }, [openYouTubeLink]);
 
 
   return (
@@ -62,23 +55,25 @@ function Flight() {
           <PerspectiveCamera makeDefault position={[0, 10, 10]} />
 
           <animated.group position={cityPosition}>
-            <City position = {[8, 1, 7]} scale={0.2} />
+            <City position = {[3.5, 1, 3.5]} scale={0.1} />
             <Targets />
             <TextCollider
               text="ABOUT"
-              position={[-5, 4.5, -1]} // Adjust position as needed
-              url="https://www.youtube.com/watch?v=OXtZfPZIex4"
-              onCollision={handleCollision}
-            />
+              position={[-2.8, 4, -1]} // Adjust position as needed
+              url="/about"
+              onCollision={() => handleCollision('/about')} // Explicitly call the route here
+              />
             <TextCollider
             text="PROJECTS"
-            position={[2, 4.5, -1]} // Adjust position as needed
-            url="https://www.youtube.com/watch?v=c4pBkDV-H5U"
-            onCollision={handleCollision}
+            position={[0, 4, -1]} // Adjust position as needed
+            url="/projects"
+            onCollision={() => handleCollision('/projects')} // Explicitly call the route here
             />
           </animated.group>
 
           <Rocket />
+          {/* <OrbitControls />  */}
+
 
           <directionalLight
             castShadow
