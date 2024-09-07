@@ -6,10 +6,10 @@ import { useFrame } from '@react-three/fiber'
 import { Matrix4, Quaternion, Vector3 } from 'three'
 import { updatePlaneAxis } from '../utils/controls'
 
-const x = new Vector3(1, 0, 0)
-const y = new Vector3(0, 1, 0)
-const z = new Vector3(0, 0, 1)
-export const rocketPosition = new Vector3(0, 4, 9)
+export const x = new Vector3(1, 0, 0)
+export const y = new Vector3(0, 1, 0)
+export const z = new Vector3(0, 0, 1)
+export const rocketPosition = new Vector3(-0.5, 4, 9)
 
 const delayedRotMatrix = new Matrix4()
 const delayedQuaternion = new Quaternion()

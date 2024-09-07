@@ -4,14 +4,14 @@ import { PerspectiveCamera, Environment, OrbitControls } from "@react-three/drei
 import { EffectComposer, HueSaturation } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
 import { useSpring, animated } from '@react-spring/three';
-import { Rocket, rocketPosition } from "../components/Rocket";
+import { Rocket, rocketPosition, x, y, z } from "../components/Rocket";
 import { Targets } from "../components/Targets";
 import { MotionBlur } from "../components/MotionBlur";
 import BlueSpace from '../models/BlueSpace';
 import Loader from '../components/Loader'; 
 import { City } from '../models/City';
 import { startAnimation, endAnimation } from '../utils/animationState'; 
-import { controls } from '../utils/controls';
+import { controls, resetVelocities } from '../utils/controls';
 import TextCollider from "../components/TextCollider"; 
 import { useNavigate } from 'react-router-dom'; // Import 
 
@@ -22,13 +22,19 @@ function Flight() {
 
   useEffect(() => {
     // Reset rocketPosition when Flight component mounts
-    rocketPosition.set(0, 4, 9);
+    rocketPosition.set(-0.5, 4, 9);
+    // Reset orientation vectors to their default values
+    x.set(1, 0, 0);
+    y.set(0, 1, 0);
+    z.set(0, 0, 1);
+    // Reset pitch, yaw, and roll velocities
+    resetVelocities();
   }, []);
 
   const { position: cityPosition } = useSpring({
-    from: { position: [0, 0, -500] },
+    from: { position: [0, 0, -300] },
     to: { position: [0, 0, 0] },
-    config: { duration: 2500 },
+    config: { duration: 1600 },
     onStart: () => {
       startAnimation(); // Disable input when animation starts
       controls["shift"] = true; // Simulate Shift key press

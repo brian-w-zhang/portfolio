@@ -25,6 +25,13 @@ let rollVelocity = 0; // Add this line
 let planeSpeed = 0.006;
 export let turbo = 0;
 
+export function resetVelocities() {
+  jawVelocity = 0;
+  pitchVelocity = 0;
+  rollVelocity = 0;
+  turbo = 0;
+}
+
 export function updatePlaneAxis(x, y, z, planePosition, camera) {
   jawVelocity *= 0.95;
   pitchVelocity *= 0.95;
@@ -71,7 +78,7 @@ export function updatePlaneAxis(x, y, z, planePosition, camera) {
     x.set(1, 0, 0);
     y.set(0, 1, 0);
     z.set(0, 0, 1);
-    planePosition.set(0, 4, 7);
+    planePosition.set(-0.5, 4, 7);
   }
 
   x.applyAxisAngle(z, jawVelocity);
