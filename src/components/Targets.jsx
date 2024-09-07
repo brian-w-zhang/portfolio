@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
-import { Quaternion, TorusGeometry, Vector3 } from "three";
+import { Quaternion, TorusGeometry, Vector3, Sphere } from "three";
 import { mergeBufferGeometries } from "three-stdlib";
 import { useFrame } from "@react-three/fiber";
 import { rocketPosition } from "./Rocket";
@@ -12,24 +12,31 @@ function randomPoint(scale) {
   ).multiply(scale || new Vector3(1, 1, 1));
 }
 
+function generateNewTarget() {
+  return {
+    center: randomPoint(new Vector3(4, 0.1, 2)).add(
+      new Vector3(-0.51, 1.6 + Math.random() * 1.5, -1)
+    ),
+    direction: randomPoint().normalize(),
+    hit: false,
+  };
+}
+
 const TARGET_RAD = 0.1;
 
 export function Targets() {
   const [targets, setTargets] = useState(() => {
-    const arr = [];
-    for (let i = 0; i < 30; i++) {
-      arr.push({
-        center: randomPoint(new Vector3(4, 0.1, 2)).add(
-          new Vector3(-0.51, 1.6 + Math.random() * 1.5, -1)
-        ),
-        direction: randomPoint().normalize(),
-        hit: false,
-      });
+    const initialTargets = [];
+    for (let i = 0; i < 1; i++) {
+      initialTargets.push(generateNewTarget());
     }
-    return arr;
+    return initialTargets;
   });
 
   const [openYouTubeLink, setOpenYouTubeLink] = useState(false);
+
+  const collisionSound = new Audio('/audio/sonic_ring.mp3');
+  collisionSound.volume = 1.0; // Set volume to 100%
 
   const geometry = useMemo(() => {
     let geo;
@@ -53,22 +60,19 @@ export function Targets() {
 
   useFrame(() => {
     let collisionOccurred = false;
-    targets.forEach((target) => {
-      const v = rocketPosition.clone().sub(target.center);
-      const dist = target.direction.dot(v);
-      const projected = rocketPosition
-        .clone()
-        .sub(target.direction.clone().multiplyScalar(dist));
-
-      const hitDist = projected.distanceTo(target.center);
-      if (hitDist < TARGET_RAD) {
-        target.hit = true;
+    const updatedTargets = targets.map((target) => {
+      const targetSphere = new Sphere(target.center, TARGET_RAD);
+      if (targetSphere.containsPoint(rocketPosition)) {
         collisionOccurred = true;
+        return generateNewTarget(); // Replace hit target with a new one
       }
+      return target;
     });
 
     if (collisionOccurred) {
-      setTargets(targets.filter((target) => !target.hit));
+      collisionSound.play();
+      setTargets(updatedTargets);
+      // Uncomment the following line if you want to open the YouTube link on collision
       // setOpenYouTubeLink(true);
     }
   });
