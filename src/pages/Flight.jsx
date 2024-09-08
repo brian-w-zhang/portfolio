@@ -6,6 +6,7 @@ import { BlendFunction } from "postprocessing";
 import { useSpring, animated } from '@react-spring/three';
 import { Rocket, rocketPosition, x, y, z } from "../components/Rocket";
 import { Targets } from "../components/Targets";
+import { RedTargets } from "../components/RedTargets";
 import { MotionBlur } from "../components/MotionBlur";
 import BlueSpace from '../models/BlueSpace';
 import Loader from '../components/Loader'; 
@@ -14,7 +15,7 @@ import { startAnimation, endAnimation } from '../utils/animationState';
 import { controls, resetVelocities } from '../utils/controls';
 import TextCollider from "../components/TextCollider"; 
 import { useNavigate } from 'react-router-dom'; 
-import { ensureAudioPlaying } from '../utils/howlerAudio'; // Add this import
+import { ensureAudioPlaying } from '../utils/howlerAudio';
 
 
 
@@ -66,6 +67,7 @@ function Flight() {
           <animated.group position={cityPosition}>
             <City position = {[3.5, 1, 3.5]} scale={0.1} />
             <Targets />
+            <RedTargets />
             <TextCollider
               text="ABOUT"
               position={[-2.8, 3.5, -1]} // Adjust position as needed
