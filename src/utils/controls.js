@@ -1,19 +1,18 @@
+import { Vector3 } from 'three';
 import { isAnimating } from './animationState';
-
-function easeOutQuad(x) {
-  return 1 - (1 - x) * (1 - x);
-}
+import { initAudio, updateAudio, ensureAudioPlaying } from './howlerAudio';
 
 export let controls = {};
 
 window.addEventListener("keydown", (e) => {
-  if (!isAnimating) { // Only register input if not animating
+  if (!isAnimating) {
     controls[e.key.toLowerCase()] = true;
+    ensureAudioPlaying();
   }
 });
 
 window.addEventListener("keyup", (e) => {
-  if (!isAnimating) { // Only register input if not animating
+  if (!isAnimating) {
     controls[e.key.toLowerCase()] = false;
   }
 });
@@ -21,7 +20,7 @@ window.addEventListener("keyup", (e) => {
 let maxVelocity = 0.04;
 let jawVelocity = 0;
 let pitchVelocity = 0;
-let rollVelocity = 0; // Add this line
+let rollVelocity = 0;
 let planeSpeed = 0.006;
 export let turbo = 0;
 
@@ -32,10 +31,14 @@ export function resetVelocities() {
   turbo = 0;
 }
 
+function easeOutQuad(x) {
+  return 1 - (1 - x) * (1 - x);
+}
+
 export function updatePlaneAxis(x, y, z, planePosition, camera) {
   jawVelocity *= 0.95;
   pitchVelocity *= 0.95;
-  rollVelocity *= 0.95; // Add this line
+  rollVelocity *= 0.95;
 
   if (Math.abs(jawVelocity) > maxVelocity) 
     jawVelocity = Math.sign(jawVelocity) * maxVelocity;
@@ -43,37 +46,20 @@ export function updatePlaneAxis(x, y, z, planePosition, camera) {
   if (Math.abs(pitchVelocity) > maxVelocity) 
     pitchVelocity = Math.sign(pitchVelocity) * maxVelocity;
 
-  if (Math.abs(rollVelocity) > maxVelocity) // Add this block
+  if (Math.abs(rollVelocity) > maxVelocity)
     rollVelocity = Math.sign(rollVelocity) * maxVelocity;
 
-  if (controls["q"]) {
-    jawVelocity += 0.0025;
-  }
-
-  if (controls["e"]) {
-    jawVelocity -= 0.0025;
-  }
-
-  if (controls["w"]) {
-    pitchVelocity += 0.002;
-  }
-
-  if (controls["s"]) {
-    pitchVelocity -= 0.002;
-  }
-
-  if (controls["a"]) { // Add this block
-    rollVelocity += 0.002;
-  }
-
-  if (controls["d"]) { // Add this block
-    rollVelocity -= 0.002;
-  }
+  if (controls["q"]) jawVelocity += 0.0025;
+  if (controls["e"]) jawVelocity -= 0.0025;
+  if (controls["w"]) pitchVelocity += 0.002;
+  if (controls["s"]) pitchVelocity -= 0.002;
+  if (controls["a"]) rollVelocity += 0.002;
+  if (controls["d"]) rollVelocity -= 0.002;
 
   if (controls["r"]) {
     jawVelocity = 0;
     pitchVelocity = 0;
-    rollVelocity = 0; // Add this line
+    rollVelocity = 0;
     turbo = 0;
     x.set(1, 0, 0);
     y.set(0, 1, 0);
@@ -83,19 +69,15 @@ export function updatePlaneAxis(x, y, z, planePosition, camera) {
 
   x.applyAxisAngle(z, jawVelocity);
   y.applyAxisAngle(z, jawVelocity);
-
   y.applyAxisAngle(x, pitchVelocity);
   z.applyAxisAngle(x, pitchVelocity);
-
-  x.applyAxisAngle(y, rollVelocity); // Add this line
-  z.applyAxisAngle(y, rollVelocity); // Add this line
+  x.applyAxisAngle(y, rollVelocity);
+  z.applyAxisAngle(y, rollVelocity);
 
   x.normalize();
   y.normalize();
   z.normalize();
 
-
-  // plane position & velocity
   if (controls.shift) {
     turbo += 0.025;
   } else {
@@ -108,5 +90,11 @@ export function updatePlaneAxis(x, y, z, planePosition, camera) {
   camera.fov = 45 + turboSpeed * 900;
   camera.updateProjectionMatrix();
 
-  planePosition.add(z.clone().multiplyScalar(-planeSpeed -turboSpeed));
+  planePosition.add(z.clone().multiplyScalar(-planeSpeed - turboSpeed));
+
+  // Update audio based on turbo value
+  updateAudio(turbo);
 }
+
+// Initialize audio when this module is loaded
+initAudio();

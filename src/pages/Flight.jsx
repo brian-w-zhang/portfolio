@@ -13,7 +13,8 @@ import { City } from '../models/City';
 import { startAnimation, endAnimation } from '../utils/animationState'; 
 import { controls, resetVelocities } from '../utils/controls';
 import TextCollider from "../components/TextCollider"; 
-import { useNavigate } from 'react-router-dom'; // Import 
+import { useNavigate } from 'react-router-dom'; 
+import { ensureAudioPlaying } from '../utils/howlerAudio'; // Add this import
 
 
 
@@ -29,6 +30,8 @@ function Flight() {
     z.set(0, 0, 1);
     // Reset pitch, yaw, and roll velocities
     resetVelocities();
+    // Ensure audio is playing
+    ensureAudioPlaying();
   }, []);
 
   const { position: cityPosition } = useSpring({
@@ -65,13 +68,13 @@ function Flight() {
             <Targets />
             <TextCollider
               text="ABOUT"
-              position={[-2.8, 4, -1]} // Adjust position as needed
+              position={[-2.8, 3.5, -1]} // Adjust position as needed
               url="/about"
               onCollision={() => handleCollision('/about')} // Explicitly call the route here
               />
             <TextCollider
             text="PROJECTS"
-            position={[0, 4, -1]} // Adjust position as needed
+            position={[0, 3.5, -1]} // Adjust position as needed
             url="/projects"
             onCollision={() => handleCollision('/projects')} // Explicitly call the route here
             />

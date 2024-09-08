@@ -27,7 +27,7 @@ const TARGET_RAD = 0.1;
 export function Targets() {
   const [targets, setTargets] = useState(() => {
     const initialTargets = [];
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < 20; i++) {
       initialTargets.push(generateNewTarget());
     }
     return initialTargets;
@@ -42,7 +42,7 @@ export function Targets() {
     let geo;
 
     targets.forEach((target) => {
-      const torusGeo = new TorusGeometry(TARGET_RAD, 0.02, 8, 25);
+      const torusGeo = new TorusGeometry(TARGET_RAD, 0.018, 8, 25);
       torusGeo.applyQuaternion(
         new Quaternion().setFromUnitVectors(
           new Vector3(0, 0, 1),
@@ -86,7 +86,7 @@ export function Targets() {
 
   return (
     <mesh geometry={geometry}>
-      <meshStandardMaterial color="#6effcc" roughness={0.5} metalness={0.5} />
+      <meshStandardMaterial color="#7af8ff" roughness={0.5} metalness={1} />
     </mesh>
   );
 }
