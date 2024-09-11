@@ -8,12 +8,18 @@ window.addEventListener("keydown", (e) => {
   if (!isAnimating) {
     controls[e.key.toLowerCase()] = true;
     ensureAudioPlaying();
+    if (e.key.toLowerCase() === 'shift') {
+      updateAudio(true); // Start turbo audio transition
+    }
   }
 });
 
 window.addEventListener("keyup", (e) => {
   if (!isAnimating) {
     controls[e.key.toLowerCase()] = false;
+  }
+  if (e.key.toLowerCase() === 'shift') {
+    updateAudio(false); // Start normal audio transition
   }
 });
 

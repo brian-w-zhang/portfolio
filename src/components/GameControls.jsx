@@ -31,6 +31,7 @@ const GameControls = () => {
             <li><strong>R</strong> - Reset</li>
             <li><strong>Q</strong> - Rotate Left</li>
             <li><strong>E</strong> - Rotate Right</li>
+            <li><em>Fly into the words and rings!</em></li>
           </ul>
         </div>
       )}

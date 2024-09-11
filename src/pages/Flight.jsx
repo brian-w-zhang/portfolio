@@ -15,7 +15,7 @@ import { startAnimation, endAnimation } from '../utils/animationState';
 import { controls, resetVelocities } from '../utils/controls';
 import TextCollider from "../components/TextCollider"; 
 import { useNavigate } from 'react-router-dom'; 
-import { ensureAudioPlaying } from '../utils/howlerAudio';
+import { initAudio, cleanupAudio, ensureAudioPlaying } from '../utils/howlerAudio';
 import GameControls from "../components/GameControls";
 
 
@@ -31,8 +31,14 @@ function Flight() {
     z.set(0, 0, 1);
     // Reset pitch, yaw, and roll velocities
     resetVelocities();
-    // Ensure audio is playing
+    // Initialize audio when the component mounts
+    initAudio();
     ensureAudioPlaying();
+
+    // Cleanup function
+    return () => {
+      cleanupAudio();
+    };
   }, []);
 
   const { position: cityPosition } = useSpring({
