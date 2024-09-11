@@ -16,7 +16,7 @@ import { controls, resetVelocities } from '../utils/controls';
 import TextCollider from "../components/TextCollider"; 
 import { useNavigate } from 'react-router-dom'; 
 import { ensureAudioPlaying } from '../utils/howlerAudio';
-
+import GameControls from "../components/GameControls";
 
 
 function Flight() {
@@ -112,6 +112,7 @@ function Flight() {
           </EffectComposer>
         </Suspense>
       </Canvas>
+      <GameControls />
     </div>
   );
 }

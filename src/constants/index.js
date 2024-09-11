@@ -193,9 +193,9 @@ export const experiences = [
     iconBg: '#ad6168',
     date: 'May 2024 - Present',
     points: [
-      "Increased encryption speed by 30% through the implementation of a mathematically optimized compression algorithm for a secure file sharing app, reducing file transfer times and enhancing overall user experience.",
-      "Spearheaded the development of innovative features for a comprehensive 2FA system across Android, macOS, Windows, and iOS platforms, leveraging Bluetooth device scanning and SSID verification to bolster security measures and user authentication.",
-      "Orchestrated the development of a compliant iOS application focused on 2FA using Swift, prioritizing seamless user experience and robust data privacy. Implemented new features that significantly enhanced usability, contributing to a more intuitive and secure authentication process for users.",
+      "Increased encryption speed by 64% with mathematically optimized compression for a MERN stack file sharing service",
+      "Spearheaded novel two-factor authentication system using Node.js and Firebase Cloud Messaging, integrating Wifi, Bluetooth, and geolocation data with a React frontend, Electron desktop app, and Swift & Kotlin mobile apps",
+      "Optimized authentication system through a 93% reduction in average wait time (20 seconds to 1.4 seconds) using asynchronous Node.js operations, Python-based child processes, and improved Firestore database handling",
     ],
   },
   {
