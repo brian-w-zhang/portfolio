@@ -43,7 +43,6 @@ function AppContent() {
           {/* <Route path="flight" element={<Flight />} /> */}
         </Routes>
       </AnimatePresence>
-      <Footer />
     </main>
   );
 }

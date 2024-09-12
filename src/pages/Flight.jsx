@@ -21,6 +21,8 @@ import GameControls from "../components/GameControls";
 
 function Flight() {
   const navigate = useNavigate();
+  const [collisionSoundPlayed, setCollisionSoundPlayed] = useState(false);
+
 
   useEffect(() => {
     // Reset rocketPosition when Flight component mounts
@@ -55,8 +57,16 @@ function Flight() {
     },
   });
 
+
+  const collisionSound = new Audio('/audio/whoosh.mp3');
+  collisionSound.volume = 1.0; // Set volume to 100%
+  
   const handleCollision = (route) => {
-    navigate(route);
+    if (!collisionSoundPlayed) {
+      collisionSound.play();
+      setCollisionSoundPlayed(true);
+      navigate(route);
+    }
   };
 
 
