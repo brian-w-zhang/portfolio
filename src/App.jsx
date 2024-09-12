@@ -9,11 +9,14 @@ import Explore from './pages/Explore';
 import Flight from './pages/Flight';
 import { AnimatePresence } from 'framer-motion';
 import { initAudio, cleanupAudio } from './utils/howlerAudio';
+import { setCurrentRoute } from './utils/controls';
 
 function AppContent() {
   const location = useLocation();
 
   useEffect(() => {
+    setCurrentRoute(location.pathname);
+
     if (location.pathname === '/flight') {
       console.log('Navigated to Flight route');
       initAudio();
@@ -36,10 +39,11 @@ function AppContent() {
           <Route path="/" element={<Flight />} />
           <Route path="about" element={<About />} />
           <Route path="projects" element={<Projects />} />
-          <Route path="explore" element={<Explore />} />
-          <Route path="flight" element={<Flight />} />
+          {/* <Route path="explore" element={<Explore />} /> */}
+          {/* <Route path="flight" element={<Flight />} /> */}
         </Routes>
       </AnimatePresence>
+      <Footer />
     </main>
   );
 }

@@ -1,14 +1,23 @@
 import { Vector3 } from 'three';
 import { isAnimating } from './animationState';
-import { initAudio, updateAudio, ensureAudioPlaying } from './howlerAudio';
+import { initAudio, updateAudio, ensureAudioPlaying, cleanupAudio } from './howlerAudio';
+
 
 export let controls = {};
 
+let currentRoute = '';
+
+export function setCurrentRoute(route) {
+  currentRoute = route;
+  console.log('Current route:', currentRoute);
+}
+
 window.addEventListener("keydown", (e) => {
+  
   if (!isAnimating) {
     controls[e.key.toLowerCase()] = true;
     ensureAudioPlaying(); // Ensure audio is playing before adjusting it
-    if (e.key.toLowerCase() === 'shift') {
+    if (e.key.toLowerCase() === 'shift' && currentRoute === '/') {
       updateAudio(1); // Immediately start turbo audio transition
     }
   }
@@ -18,8 +27,11 @@ window.addEventListener("keyup", (e) => {
   if (!isAnimating) {
     controls[e.key.toLowerCase()] = false;
   }
-  if (e.key.toLowerCase() === 'shift') {
+  if (e.key.toLowerCase() === 'shift' && currentRoute === '/') {
     updateAudio(0); // Immediately start normal audio transition
+    if (currentRoute !== '/') {
+      cleanupAudio(); // Stop audio when not in Flight route
+    }
   }
 });
 
