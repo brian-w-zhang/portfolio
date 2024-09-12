@@ -13,6 +13,8 @@ let currentState = 'normal';
 let transitionTimeout;
 
 export function initAudio() {
+  if (engineSound) return; // Audio already initialized
+
   engineSound = new Howl({
     src: ['/audio/engine.ogg'],
     loop: true,
@@ -29,6 +31,7 @@ export function initAudio() {
     console.error('Error loading audio:', err);
   });
 }
+
 
 function transitionAudio(targetVolume, targetRate) {
   if (!engineSound) {
@@ -61,6 +64,12 @@ function transitionAudio(targetVolume, targetRate) {
 }
 
 export function updateAudio(turbo) {
+  if (!engineSound) {
+    console.warn("Engine sound not initialized. Initializing now...");
+    initAudio(); // Call initAudio to make sure the sound is initialized
+    return; // Exit early since the sound is not ready
+  }
+
   const targetState = turbo > 0.5 ? 'turbo' : 'normal';
 
   if (targetState !== currentState) {

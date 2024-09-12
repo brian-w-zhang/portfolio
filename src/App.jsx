@@ -7,10 +7,9 @@ import About from './pages/About';
 import Projects from './pages/Projects';
 import Explore from './pages/Explore';
 import Flight from './pages/Flight';
-import { AnimatePresence } from 'framer-motion'; // Import AnimatePresence
+import { AnimatePresence } from 'framer-motion';
 import { initAudio, cleanupAudio } from './utils/howlerAudio';
 
-// Move the Router wrapper outside the App component
 function AppContent() {
   const location = useLocation();
 
@@ -23,7 +22,6 @@ function AppContent() {
       cleanupAudio();
     }
 
-    // Cleanup function
     return () => {
       console.log('Cleaning up audio on route change');
       cleanupAudio();
@@ -33,17 +31,15 @@ function AppContent() {
   return (
     <main className="bg-custom-background">
       <Navbar />
-        <AnimatePresence mode='wait'> {/* Wrap your Routes in AnimatePresence */}
-          <Routes>
-            <Route path="/" element={<Flight />} />
-            <Route path="about" element={<About />} />
-            <Route path="projects" element={<Projects />} />
-            <Route path="explore" element={<Explore />} />
-            <Route path="flight" element={<Flight />} />
-            {/* <Route path="contact" element={<Contact />} /> */}
-          </Routes>
-        </AnimatePresence>
-      {/* <Footer /> */}
+      <AnimatePresence mode='wait'>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Flight />} />
+          <Route path="about" element={<About />} />
+          <Route path="projects" element={<Projects />} />
+          <Route path="explore" element={<Explore />} />
+          <Route path="flight" element={<Flight />} />
+        </Routes>
+      </AnimatePresence>
     </main>
   );
 }

@@ -7,9 +7,9 @@ export let controls = {};
 window.addEventListener("keydown", (e) => {
   if (!isAnimating) {
     controls[e.key.toLowerCase()] = true;
-    ensureAudioPlaying();
+    ensureAudioPlaying(); // Ensure audio is playing before adjusting it
     if (e.key.toLowerCase() === 'shift') {
-      updateAudio(true); // Start turbo audio transition
+      updateAudio(1); // Immediately start turbo audio transition
     }
   }
 });
@@ -19,7 +19,7 @@ window.addEventListener("keyup", (e) => {
     controls[e.key.toLowerCase()] = false;
   }
   if (e.key.toLowerCase() === 'shift') {
-    updateAudio(false); // Start normal audio transition
+    updateAudio(0); // Immediately start normal audio transition
   }
 });
 
