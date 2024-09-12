@@ -25,14 +25,44 @@ const GameControls = () => {
             onClick={toggleControls}
           />
           <h3 className="text-xl font-bold mb-3 text-center">Rocket Controls</h3>
-          <ul className="space-y-2">
-            <li><strong>WASD</strong> - Change Direction</li>
-            <li><strong>Shift</strong> - Turbo Speed</li>
-            <li><strong>R</strong> - Reset</li>
-            <li><strong>Q</strong> - Rotate Left</li>
-            <li><strong>E</strong> - Rotate Right</li>
-            <li><em>Fly into the words and rings!</em></li>
-          </ul>
+          <div className="space-y-2">
+            <div className="flex items-center">
+              <div className="flex space-x-1">
+                <span className="bg-gray-800 text-white px-2 py-1 rounded text-sm">W</span>
+                <span className="bg-gray-800 text-white px-2 py-1 rounded text-sm">A</span>
+                <span className="bg-gray-800 text-white px-2 py-1 rounded text-sm">S</span>
+                <span className="bg-gray-800 text-white px-2 py-1 rounded text-sm">D</span>
+              </div>
+              <span className="ml-2">Steering</span>
+            </div>
+            <div className="flex items-center">
+              <div className="flex space-x-1">
+                <span className="bg-gray-800 text-white px-2 py-1 rounded text-sm">Shift</span>
+              </div>
+              <span className="ml-2">Turbo Speed</span>
+            </div>
+            <div className="flex items-center">
+              <div className="flex space-x-1">
+                <span className="bg-gray-800 text-white px-2 py-1 rounded text-sm">R</span>
+              </div>
+              <span className="ml-2">Reset</span>
+            </div>
+            <div className="flex items-center">
+              <div className="flex space-x-1">
+                <span className="bg-gray-800 text-white px-2 py-1 rounded text-sm">Q</span>
+              </div>
+              <span className="ml-2">Rotate Left</span>
+            </div>
+            <div className="flex items-center">
+              <div className="flex space-x-1">
+                <span className="bg-gray-800 text-white px-2 py-1 rounded text-sm">E</span>
+              </div>
+              <span className="ml-2">Rotate Right</span>
+            </div>
+            <div className="mt-3 italic text-sm text-center">
+              Fly into the words and rings!
+            </div>
+          </div>
         </div>
       )}
     </div>
