@@ -58,7 +58,7 @@ function Flight() {
   });
 
 
-  const collisionSound = new Audio('/audio/whoosh.mp3');
+  const collisionSound = new Audio('/audio/whoosh-4.mp3');
   collisionSound.volume = 1.0; // Set volume to 100%
   
   const handleCollision = (route) => {
