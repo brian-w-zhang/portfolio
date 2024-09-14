@@ -3,6 +3,7 @@ import {
   VerticalTimelineElement,
 } from 'react-vertical-timeline-component';
 
+// test github configuration
 // import { CTA } from "../components";
 import { experiences, skills } from '../constants';
 
