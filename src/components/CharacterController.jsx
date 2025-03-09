@@ -161,7 +161,7 @@ export const CharacterController = () => {
       rb.current.setLinvel(vel, true);
     }
 
-    // // CAMERA
+    // CAMERA
     container.current.rotation.y = MathUtils.lerp(
       container.current.rotation.y,
       rotationTarget.current,
@@ -169,21 +169,23 @@ export const CharacterController = () => {
     );
 
     cameraPosition.current.getWorldPosition(cameraWorldPosition.current);
-    camera.position.lerp(cameraWorldPosition.current, 0.2);
+    camera.position.lerp(cameraWorldPosition.current, 0.5);
 
     if (cameraTarget.current) {
       cameraTarget.current.getWorldPosition(cameraLookAtWorldPosition.current);
-      cameraLookAt.current.lerp(cameraLookAtWorldPosition.current, 0.2);
+      cameraLookAt.current.lerp(cameraLookAtWorldPosition.current, 0.5);
 
       camera.lookAt(cameraLookAt.current);
     }
+
+
   });
 
   return (
     <RigidBody colliders={false} lockRotations ref={rb}>
       <group ref={container}>
         <group ref={cameraTarget} position-z={1.2} />
-        <group ref={cameraPosition} position-y={3} position-z={-4} />
+        <group ref={cameraPosition} position-y={10} position-z={-10} />
         <group ref={character}>
           <Astronaut scale={0.28} position-y={-0.25} animation={animation} />
         </group>

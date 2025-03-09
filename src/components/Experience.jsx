@@ -1,5 +1,5 @@
 import { Environment, OrbitControls, OrthographicCamera } from "@react-three/drei";
-import { Physics } from "@react-three/rapier";
+import { Physics, RigidBody } from "@react-three/rapier";
 import { useControls } from "leva";
 import { useRef } from "react";
 import { CharacterController } from "./CharacterController";
@@ -7,6 +7,11 @@ import BlueSpace from '../models/BlueSpace';
 import { Map } from "./Map";
 
 const maps = {
+  city_grid_block: {
+    scale: 1,
+    position: [28, -5, 50],
+    rotation: [0, 0, 0],
+  },
   fantasy_island: { 
     scale: 0.2,
     position: [2, -5, 0],
@@ -53,6 +58,10 @@ export const Experience = () => {
     },
   });
 
+  const { floorZPosition } = useControls("Floor", {
+    floorZPosition: { value: 0, min: -10, max: 10, step: 0.1 },
+  });
+
   return (
     <>
       {/* Remove OrbitControls when doing keyboard interaction and not looking for models in the scene to adjust properties */}
@@ -85,9 +94,9 @@ export const Experience = () => {
         shadow-camera-right={6.4}
       >
         <OrthographicCamera
-          left={-22}
-          right={15}
-          top={10}
+          left={-50}
+          right={30}
+          top={20}
           bottom={-20}
           ref={shadowCameraRef}
           attach={"shadow-camera"}

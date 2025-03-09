@@ -37,10 +37,11 @@ function AppContent() {
       <AnimatePresence mode='wait'>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Flight />} />
+          {/* <Route path="about" element={<Explore />} /> */}
           <Route path="about" element={<About />} />
+          
           <Route path="projects" element={<Projects />} />
-          {/* <Route path="explore" element={<Explore />} /> */}
-          {/* <Route path="flight" element={<Flight />} /> */}
+          <Route path="explore" element={<Explore />} />
         </Routes>
       </AnimatePresence>
     </main>
