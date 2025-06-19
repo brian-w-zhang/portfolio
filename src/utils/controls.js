@@ -67,12 +67,12 @@ export function updatePlaneAxis(x, y, z, planePosition, camera) {
   if (Math.abs(rollVelocity) > maxVelocity)
     rollVelocity = Math.sign(rollVelocity) * maxVelocity;
 
-  if (controls["q"]) jawVelocity += 0.0025;
-  if (controls["e"]) jawVelocity -= 0.0025;
-  if (controls["w"]) pitchVelocity += 0.002;
-  if (controls["s"]) pitchVelocity -= 0.002;
-  if (controls["a"]) rollVelocity += 0.002;
-  if (controls["d"]) rollVelocity -= 0.002;
+  if (controls["q"]) jawVelocity += 0.001;
+  if (controls["e"]) jawVelocity -= 0.001;
+  if (controls["w"]) pitchVelocity += 0.001;
+  if (controls["s"]) pitchVelocity -= 0.001;
+  if (controls["a"]) rollVelocity += 0.001;
+  if (controls["d"]) rollVelocity -= 0.001;
 
   if (controls["r"]) {
     jawVelocity = 0;
