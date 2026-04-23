@@ -49,14 +49,20 @@ export function resetVelocities() {
   turbo = 0;
 }
 
+export function resetControlsState() {
+  controls = {};
+}
+
 function easeOutQuad(x) {
   return 1 - (1 - x) * (1 - x);
 }
 
-export function updatePlaneAxis(x, y, z, planePosition, camera) {
-  jawVelocity *= 0.95;
-  pitchVelocity *= 0.95;
-  rollVelocity *= 0.95;
+export function updatePlaneAxis(x, y, z, planePosition, camera, delta = 1 / 60) {
+  const frameFactor = Math.min(Math.max(delta * 60, 0.25), 2);
+
+  jawVelocity *= Math.pow(0.95, frameFactor);
+  pitchVelocity *= Math.pow(0.95, frameFactor);
+  rollVelocity *= Math.pow(0.95, frameFactor);
 
   if (Math.abs(jawVelocity) > maxVelocity) 
     jawVelocity = Math.sign(jawVelocity) * maxVelocity;
@@ -67,12 +73,12 @@ export function updatePlaneAxis(x, y, z, planePosition, camera) {
   if (Math.abs(rollVelocity) > maxVelocity)
     rollVelocity = Math.sign(rollVelocity) * maxVelocity;
 
-  if (controls["q"]) jawVelocity += 0.001;
-  if (controls["e"]) jawVelocity -= 0.001;
-  if (controls["w"]) pitchVelocity += 0.001;
-  if (controls["s"]) pitchVelocity -= 0.001;
-  if (controls["a"]) rollVelocity += 0.001;
-  if (controls["d"]) rollVelocity -= 0.001;
+  if (controls["q"]) jawVelocity += 0.001 * frameFactor;
+  if (controls["e"]) jawVelocity -= 0.001 * frameFactor;
+  if (controls["w"]) pitchVelocity += 0.001 * frameFactor;
+  if (controls["s"]) pitchVelocity -= 0.001 * frameFactor;
+  if (controls["a"]) rollVelocity += 0.001 * frameFactor;
+  if (controls["d"]) rollVelocity -= 0.001 * frameFactor;
 
   if (controls["r"]) {
     jawVelocity = 0;
@@ -97,9 +103,9 @@ export function updatePlaneAxis(x, y, z, planePosition, camera) {
   z.normalize();
 
   if (controls.shift) {
-    turbo += 0.025;
+    turbo += 0.025 * frameFactor;
   } else {
-    turbo *= 0.95;
+    turbo *= Math.pow(0.95, frameFactor);
   }
   turbo = Math.min(Math.max(turbo, 0), 1);
 
@@ -108,7 +114,9 @@ export function updatePlaneAxis(x, y, z, planePosition, camera) {
   camera.fov = 45 + turboSpeed * 900;
   camera.updateProjectionMatrix();
 
-  planePosition.add(z.clone().multiplyScalar(-planeSpeed - turboSpeed));
+  planePosition.add(
+    z.clone().multiplyScalar((-planeSpeed - turboSpeed) * frameFactor)
+  );
 
   // Update audio based on turbo value
   updateAudio(turbo);

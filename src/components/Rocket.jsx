@@ -14,7 +14,12 @@ export const rocketPosition = new Vector3(-0.5, 4, 9)
 const delayedRotMatrix = new Matrix4()
 const delayedQuaternion = new Quaternion()
 
-export function Rocket(props) {
+export function resetRocketCameraSmoothing() {
+  delayedQuaternion.identity()
+  delayedRotMatrix.identity()
+}
+
+export function Rocket({ onReady, ...props }) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/models/rocket_rider.glb')
   const { actions } = useAnimations(animations, group)
@@ -24,8 +29,12 @@ export function Rocket(props) {
     actions['Take 001'].play();
   }, [actions]);
 
-  useFrame(({ camera }) => {
-    updatePlaneAxis(x, y, z, rocketPosition, camera)
+  useEffect(() => {
+    onReady?.();
+  }, [onReady]);
+
+  useFrame(({ camera }, delta) => {
+    updatePlaneAxis(x, y, z, rocketPosition, camera, delta)
 
     const rotMatrix = new Matrix4().makeBasis(x, y, z)
 

@@ -4,7 +4,7 @@ import { PerspectiveCamera, Environment, OrbitControls } from "@react-three/drei
 import { EffectComposer, HueSaturation } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
 import { useSpring, animated } from '@react-spring/three';
-import { Rocket, rocketPosition, x, y, z } from "../components/Rocket";
+import { Rocket, rocketPosition, x, y, z, resetRocketCameraSmoothing } from "../components/Rocket";
 import { Targets } from "../components/Targets";
 import { RedTargets } from "../components/RedTargets";
 import { MotionBlur } from "../components/MotionBlur";
@@ -12,7 +12,7 @@ import BlueSpace from '../models/BlueSpace';
 import Loader from '../components/Loader'; 
 import { City } from '../models/City';
 import { startAnimation, endAnimation } from '../utils/animationState'; 
-import { controls, resetVelocities } from '../utils/controls';
+import { controls, resetVelocities, resetControlsState } from '../utils/controls';
 import TextCollider from "../components/TextCollider"; 
 import { useNavigate } from 'react-router-dom'; 
 import { initAudio, cleanupAudio, ensureAudioPlaying } from '../utils/howlerAudio';
@@ -22,11 +22,17 @@ import GameControls from "../components/GameControls";
 function Flight() {
   const navigate = useNavigate();
   const [collisionSoundPlayed, setCollisionSoundPlayed] = useState(false);
+  const [rocketReady, setRocketReady] = useState(false);
 
 
   useEffect(() => {
-    // Reset rocketPosition when Flight component mounts
-    rocketPosition.set(-0.5, 4, 9);
+    // Normalize all shared flight state on mount so refresh and route returns match.
+    resetControlsState();
+    resetRocketCameraSmoothing();
+    controls["shift"] = false;
+
+    // Test spawn distance.
+    rocketPosition.set(-0.5, 4, 12);
     // Reset orientation vectors to their default values
     x.set(1, 0, 0);
     y.set(0, 1, 0);
@@ -39,11 +45,16 @@ function Flight() {
 
     // Cleanup function
     return () => {
+      // Ensure no sticky key state survives route transitions.
+      controls["shift"] = false;
+      resetControlsState();
+      setRocketReady(false);
       cleanupAudio();
     };
   }, []);
 
   const { position: cityPosition } = useSpring({
+    pause: !rocketReady,
     from: { position: [0, 0, -300] },
     to: { position: [0, 0, 0] },
     config: { duration: 1600 },
@@ -98,7 +109,7 @@ function Flight() {
             />
           </animated.group>
 
-          <Rocket />
+          <Rocket onReady={() => setRocketReady(true)} />
           {/* <OrbitControls />  */}
 
 
