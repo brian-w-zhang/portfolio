@@ -3,9 +3,7 @@ import {
   VerticalTimelineElement,
 } from 'react-vertical-timeline-component';
 
-// test github configuration
-// import { CTA } from "../components";
-import { experiences, skills } from '../constants';
+import { experiences } from '../constants';
 
 import 'react-vertical-timeline-component/style.min.css';
 import Footer from '../components/Footer';
@@ -15,23 +13,20 @@ import { motion } from 'framer-motion';
 const About = () => {
   return (
     <motion.div
-      initial={{ opacity: 0, filter: "blur(10px)" }} // Starts as transparent and blurry
-      animate={{ opacity: 1, filter: "blur(0px)" }} // Fades in and clears the blur
-      exit={{ opacity: 0, filter: "blur(10px)" }} // Fades out and adds blur
-      transition={{ duration: 1, ease: "easeInOut", delay: 0.3 }} // Customize the duration, easing, and delay
+      initial={{ opacity: 0, filter: "blur(10px)" }}
+      animate={{ opacity: 1, filter: "blur(0px)" }}
+      exit={{ opacity: 0, filter: "blur(10px)" }}
+      transition={{ duration: 1, ease: "easeInOut", delay: 0.3 }}
       className="about-page"
     >
       <section className="max-container bg-custom-background">
-        <h1 className="head-text text-white">
-          Hi, I'm{' '}
-          <span className="blue-gradient_text font-semibold drop-shadow">
-            {' '}
-            Brian!
-          </span>{' '}
-        </h1>
 
-        <div className="mt-5 flex flex-col gap-3 text-slate-500">
-          <p>
+        <div className="about-intro">
+          <h1 className="head-text text-white">
+            Hi, I&apos;m{' '}
+            <span className="blue-gradient_text font-semibold">Brian.</span>
+          </h1>
+          <p className="about-body mt-6">
             A full stack developer studying Software Engineering at the University
             of Waterloo. Driven by a passion for leveraging technology to create
             meaningful and impactful solutions. In my free time, I enjoy playing
@@ -40,78 +35,59 @@ const About = () => {
           </p>
         </div>
 
-        <div className="py-10 flex flex-col">
-          <h3 className="subhead-text text-white">Technical Skills</h3>
+        <div className="about-divider" />
 
-          <div className="mt-16 flex flex-wrap gap-12">
-            {skills.map((skill) => (
-              <div className="block-container w-20 h-20" key={skill.name}>
-                <div className="btn-back rounded-xl" />
-                <div className="btn-front rounded-xl flex justify-center items-center">
-                  <img
-                    src={skill.imageUrl}
-                    alt={skill.name}
-                    className="w-1/2 h-1/2 object-contain"
-                  />
-                </div>
-                <p className="text-sm text-center mt-20 py-1 text-slate-300">
-                  {skill.name}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
+        <div className="py-14">
+          <h3 className="subhead-text text-white mt-1">Work Experience</h3>
 
-        <div className="py-16">
-          <h3 className="subhead-text text-white">Work Experience</h3>
-          <div className="mt-5 flex flex-col gap-3 text-slate-500">
-            <p>
-              I've collaborated with diverse companies, refining my skills
-              alongside talented teams. Here's an overview:
-            </p>
-          </div>
-
-          <div className="mt-12 flex">
-            <VerticalTimeline>
-              {experiences.map((experience, index) => (
+          <div className="mt-10">
+            <VerticalTimeline lineColor="rgba(255,255,255,0.08)">
+              {experiences.map((experience) => (
                 <VerticalTimelineElement
                   key={experience.company_name}
                   date={experience.date}
-                  iconStyle={{ background: experience.iconBg }}
+                  iconStyle={{
+                    background: experience.iconBg,
+                    boxShadow: 'none',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                  }}
                   icon={
                     <div className="flex justify-center items-center w-full h-full">
                       <img
                         src={experience.icon}
                         alt={experience.company_name}
-                        className="w-[60%] h-[60%] object-contain"
+                        className={`object-contain ${
+                          experience.company_name === 'Baycrest'
+                            ? 'w-[68%] h-[68%]'
+                            : 'w-[60%] h-[60%]'
+                        }`}
                       />
                     </div>
                   }
                   contentStyle={{
-                    borderBottom: '8px',
-                    borderStyle: 'solid',
-                    borderBottomColor: experience.iconBg,
+                    background: 'rgba(255,255,255,0.03)',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    borderBottom: '2px solid rgba(255,255,255,0.12)',
                     boxShadow: 'none',
+                    borderRadius: '8px',
                   }}
-                  dateClassName="text-white mx-3"
+                  contentArrowStyle={{ borderRight: '7px solid rgba(255,255,255,0.08)' }}
+                  dateClassName="text-slate-400 mx-3 text-sm"
                 >
                   <div>
-                    <h3 className="text-black text-xl font-poppins font-semibold">
+                    <h3 className="text-white text-lg font-poppins font-semibold leading-snug">
                       {experience.title}
                     </h3>
-                    <p
-                      className="text-black-500 font-medium text-base"
-                      style={{ margin: 0 }}
-                    >
+                    <p className="text-slate-400 text-sm font-medium mt-0.5" style={{ margin: 0 }}>
                       {experience.company_name}
                     </p>
                   </div>
 
-                  <ul className="my-5 list-disc ml-5 space-y-2">
+                  <ul className="my-4 space-y-2 border-t border-white/5 pt-4">
                     {experience.points.map((point, index) => (
                       <li
                         key={`experience-point-${index}`}
-                        className="text-black-500 font-normal pl-1 text-sm"
+                        className="text-slate-400 text-sm leading-relaxed pl-3 relative before:absolute before:left-0 before:top-2 before:w-1 before:h-1 before:rounded-full before:bg-slate-500"
                       >
                         {point}
                       </li>
@@ -123,9 +99,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* <hr className="border-slate-200" /> */}
-
-        {/* <CTA /> */}
         <Footer />
       </section>
     </motion.div>

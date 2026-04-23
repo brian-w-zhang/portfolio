@@ -83,6 +83,49 @@ body:has(.card[data-color='green']:hover) {
   .cta-text {
     @apply text-black-500 font-extrabold flex-1 text-3xl max-md:text-center;
   }
+
+  /* ─── Minimal About / Projects shared utilities ─── */
+
+  .about-label {
+    @apply text-xs font-semibold tracking-[0.18em] uppercase text-slate-500 mb-3;
+  }
+
+  .about-body {
+    @apply text-slate-400 text-base leading-relaxed max-w-2xl;
+  }
+
+  .about-divider {
+    @apply w-full h-px bg-white/[0.07] my-12;
+  }
+
+  /* Projects list */
+  .project-list {
+    @apply flex flex-col divide-y divide-white/[0.06] mb-16;
+  }
+
+  .project-row {
+    @apply flex items-start gap-6 py-8 transition-colors duration-200 hover:bg-white/[0.02] -mx-4 px-4 rounded-lg;
+  }
+
+  .project-index {
+    @apply text-slate-600 text-sm font-mono tabular-nums mt-1 w-6 shrink-0 select-none;
+  }
+
+  .project-content {
+    @apply flex-1 min-w-0;
+  }
+
+  .project-name {
+    @apply text-white text-lg font-poppins font-semibold leading-snug;
+  }
+
+  .project-description {
+    @apply mt-1.5 text-slate-400 text-sm leading-relaxed;
+  }
+
+  .project-link {
+    @apply shrink-0 mt-1 text-slate-600 transition-colors duration-150 group-hover:text-slate-200;
+  }
 }
 
 .glassmorphism {

@@ -8,10 +8,10 @@ import { motion } from 'framer-motion';
 const Projects = () => {
   return (
     <motion.div
-      initial={{ opacity: 0, filter: "blur(10px)" }} // Starts as transparent and blurry
-      animate={{ opacity: 1, filter: "blur(0px)" }} // Fades in and clears the blur
-      exit={{ opacity: 0, filter: "blur(10px)" }} // Fades out and adds blur
-      transition={{ duration: 1, ease: "easeInOut", delay: 0.3 }} // Customize the duration, easing, and delay
+      initial={{ opacity: 0, filter: "blur(10px)" }}
+      animate={{ opacity: 1, filter: "blur(0px)" }}
+      exit={{ opacity: 0, filter: "blur(10px)" }}
+      transition={{ duration: 1, ease: "easeInOut", delay: 0.3 }}
       className="about-page"
     >
       <section className="max-container">
@@ -23,7 +23,7 @@ const Projects = () => {
         </h1>
 
         <p className="text-slate-500 mt-2 leading-relaxed">
-          I'm deeply committed to project based learning, continuously seeking
+          I&apos;m deeply committed to project based learning, continuously seeking
           opportunities to expand my knowledge and skillset. Listed below are some
           highlights that I have thoroughly enjoyed working on.
         </p>
@@ -70,6 +70,7 @@ const Projects = () => {
         {/* <hr className="border-slate-200" /> */}
 
         {/* <CTA /> */}
+
         <Footer />
       </section>
     </motion.div>

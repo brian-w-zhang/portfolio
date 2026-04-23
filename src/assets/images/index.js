@@ -9,6 +9,9 @@ import mcgill from './mcgill_logo.png';
 import orbital from './orbital_logo.png';
 import ta from './target_alpha_logo.png';
 import cynorix from './cynorix_logo.png';
+import simplify from './simplify_logo.png';
+import baycrest from './baycrest_logo.jpeg';
+import watstreet from './wat_street_logo.jpeg';
 
 export {
   cynorix,
@@ -16,6 +19,9 @@ export {
   mcgill,
   orbital,
   ta,
+  simplify,
+  baycrest,
+  watstreet,
   hero,
   meta,
   shopify,

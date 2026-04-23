@@ -1,12 +1,10 @@
 import {
-  meta,
-  shopify,
-  starbucks,
+  simplify,
+  baycrest,
+  watstreet,
   tesla,
-  zoomers,
   mcgill,
   orbital,
-  ta,
   cynorix,
 } from '../assets/images';
 import {
@@ -27,7 +25,6 @@ import {
   selenium,
   sql,
   jarvis,
-  nlp,
   asl,
   car,
   contact,
@@ -188,25 +185,50 @@ export const skills = [
 export const experiences = [
   {
     title: 'Software Engineer',
+    company_name: 'Simplify',
+    icon: simplify,
+    iconBg: '#FFF',
+    date: 'Sep 2025 - Feb 2026',
+    points: [
+      'Spearheaded email integration for 1M+ users, automating job tracking via FastAPI, PostgreSQL, and Redis caching',
+      'Powered automatic status updates for 200M+ job applications through email intent classification using SpaCy NLP',
+      'Streamlined discovery of 27.8M+ untracked applications with Elasticsearch multi-match queries and semantic similarity',
+    ],
+  },
+  {
+    title: 'Frontend Developer',
+    company_name: 'Wat Street',
+    icon: watstreet,
+    iconBg: '#000',
+    date: 'Dec 2024 - May 2025',
+    points: [
+      'Engineered an options strategy builder in Next.js, enabling simulation of quantitative trading strategies with ML models',
+      'Developed an interactive stock dashboard using Polygon.io, improving portfolio performance monitoring with price analytics',
+      'Built a real-time stock heatmap via Next.js, visx, and live market data to quickly visualize sector movements and anomalies',
+    ],
+  },
+  {
+    title: 'Software Engineer',
+    company_name: 'Baycrest',
+    icon: baycrest,
+    iconBg: '#FFF',
+    date: 'Jan 2025 - Apr 2025',
+    points: [
+      'Launched a mobile app with React Native and Node.js for the Canadian-Caregiver Assessment and Resources Tool (C-CART), empowering caregivers with personalized resource recommendations to alleviate burnout and financial stress',
+      'Streamlined C-CART resource quality monitoring with automated web scraping using Python, Playwright, and Docker',
+      'Expanded user base of a cognitive rehab program by 23% by localizing a Vue.js + PostgreSQL platform for French speakers',
+    ],
+  },
+  {
+    title: 'Software Engineer',
     company_name: 'Cynorix',
     icon: cynorix,
     iconBg: '#ad6168',
-    date: 'May 2024 - Present',
+    date: 'May 2024 - Aug 2024',
     points: [
       "Increased encryption speed by 64% with mathematically optimized compression for a MERN stack file sharing service",
       "Spearheaded novel two-factor authentication system using Node.js and Firebase Cloud Messaging, integrating Wifi, Bluetooth, and geolocation data with a React frontend, Electron desktop app, and Swift & Kotlin mobile apps",
       "Optimized authentication system through a 93% reduction in average wait time (20 seconds to 1.4 seconds) using asynchronous Node.js operations, Python-based child processes, and improved Firestore database handling",
-    ],
-  },
-  {
-    title: 'Web Developer',
-    company_name: 'McGill University',
-    icon: mcgill,
-    iconBg: '#fbc3bc',
-    date: 'Jan 2024 - Present',
-    points: [
-      "Individually designed and developed a website using React for McGill University's East Asian Studies Department, servicing 250+ undergraduate students and supporting 20+ professors",
-      'Compiled input from student association executives to elevate their branding rooted in East Asian aesthetics, while prioritizing seamless UI/UX design, resulting in a 200% increase in website traffic',
     ],
   },
   {
@@ -222,27 +244,14 @@ export const experiences = [
     ],
   },
   {
-    title: 'Chapter President',
-    company_name: 'Target Alpha Canada',
-    icon: ta,
-    iconBg: '#b7e4c7',
-    date: 'March 2022 - June 2023',
+    title: 'Web Developer',
+    company_name: 'McGill University',
+    icon: mcgill,
+    iconBg: '#fbc3bc',
+    date: 'Jan 2024 - May 2024',
     points: [
-      'Founded school’s leading finance club of 50+ members in association with Target Alpha Canada',
-      'Led weekly meetings; tutored students in investing, stocks, presentation strategies and more',
-      'Wharton Global High School Investment Competition Semi-Finalist (top 55 teams out of 1200+)',
-    ],
-  },
-  {
-    title: 'VP of Marketing',
-    company_name: 'Zoomers',
-    icon: zoomers,
-    iconBg: '#d6bd6f',
-    date: 'Sep 2020 - May 2021',
-    points: [
-      'Founded a startup apparel company with peers and mentors, raising money for Kids Help Phone through profit donations per unit sold',
-      'Executed a cohesive content marketing plan on Instagram, raising awareness for youth mental health resources and accumulating over 350 followers',
-      'Achieved zero marketing expenses by utilizing word-of-mouth strategies and organic social media growth, enabling the startup to break even',
+      "Individually designed and developed a website using React for McGill University's East Asian Studies Department, servicing 250+ undergraduate students and supporting 20+ professors",
+      'Compiled input from student association executives to elevate their branding rooted in East Asian aesthetics, while prioritizing seamless UI/UX design, resulting in a 200% increase in website traffic',
     ],
   },
 ];
@@ -289,14 +298,6 @@ export const projects = [
     description:
       'A 3D animated search engine for American Sign Language. Bridging communication gaps with an innovative learning experience, meticulously crafted to foster ASL education and awareness.',
     link: 'https://github.com/DeerHacks2024/frontend',
-  },
-  {
-    iconUrl: nlp,
-    theme: 'btn-back-green',
-    name: 'Witcher Net',
-    description:
-      'A visualized, data driven exploration the Witcher book series through Natural Language Processing. A character relationship deep dive using web scraping, NER, and immersive network analysis.',
-    link: 'https://github.com/brian-w-zhang/witcher_project.git',
   },
   {
     iconUrl: flower,
