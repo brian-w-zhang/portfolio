@@ -19,7 +19,7 @@ const About = () => {
       transition={{ duration: 1, ease: "easeInOut", delay: 0.3 }}
       className="about-page"
     >
-      <section className="max-container bg-custom-background">
+      <section className="max-container">
 
         <div className="about-intro">
           <h1 className="head-text text-white">
